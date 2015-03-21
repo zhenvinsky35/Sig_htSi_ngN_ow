@@ -7,4 +7,11 @@
 	<string name="treble_clef">Treble clef</string>
 	<string name="bass_clef">Bass clef</string>
 	<string name="title_activity_practice">PracticeActivity</string>
+	<string name="get_starting_pitch">Get Starting Pitch</string>
+	<string name="get_rhythm">Get Rhythm</string>
+	<string name="start_recording">Record Your Singing</string>
+	<string name="stop_recording">Stop Recording</string>
+	<string name="playback_recording">Play Back Your Singing</string>
+	<string name="playback_reference">Play Correct Version</string>
+	<string name="next_exercise">Next Exercise</string>
 </resources>

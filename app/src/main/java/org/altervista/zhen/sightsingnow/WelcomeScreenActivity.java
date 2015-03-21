@@ -44,25 +44,22 @@ public class WelcomeScreenActivity extends ActionBarActivity
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
 
-		//noinspection SimplifiableIfStatement
-		if (id == R.id.action_settings)
-		{
-			return true;
-		}
-
 		return super.onOptionsItemSelected(item);
 	}
 
 	public void onClickTrebleClef(View view)
 	{
 		Intent intent = new Intent(this, PracticeActivity.class)
-				.putExtra(PracticeActivity.EXTRA_CLEF, MusicNotationView.Clef.TREBLE);
+				.putExtra(PracticeActivity.EXTRA_CLEF, MusicNotationView.Clef.TREBLE_NUMERICAL_IDENTIFIER);
+		startActivity(intent, null);
 	}
 
 	public void onClickBassClef(View view)
 	{
-		//todo send intent
-	}
+		Intent intent = new Intent(this, PracticeActivity.class)
+				.putExtra(PracticeActivity.EXTRA_CLEF, MusicNotationView.Clef.BASS_NUMERICAL_IDENTIFIER);
+		startActivity(intent, null);
+}
 
 	public static class WelcomeScreenFragment extends Fragment
 	{

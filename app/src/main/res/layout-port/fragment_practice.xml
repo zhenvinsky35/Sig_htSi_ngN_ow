@@ -1,0 +1,113 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				xmlns:tools="http://schemas.android.com/tools"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:paddingLeft="@dimen/activity_horizontal_margin"
+				android:paddingRight="@dimen/activity_horizontal_margin"
+				android:paddingTop="@dimen/activity_vertical_margin"
+				android:paddingBottom="@dimen/activity_vertical_margin"
+				tools:context="org.altervista.zhen.sightsingnow.PracticeActivity.PracticeFragment">
+
+	<view
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		class="org.altervista.zhen.sightsingnow.MusicNotationView"
+		android:id="@+id/musicStaffTop"
+		android:layout_alignParentTop="true"
+		android:layout_centerHorizontal="true"
+		android:focusable="false"/>
+
+	<view
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		class="org.altervista.zhen.sightsingnow.MusicNotationView"
+		android:id="@+id/musicStaffBottom"
+		android:layout_below="@+id/musicStaffTop"
+		android:layout_alignParentLeft="true"
+		android:layout_alignParentStart="true"/>
+
+	<RelativeLayout
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/musicStaffBottom"
+		android:layout_centerHorizontal="true"
+		android:layout_alignParentEnd="false">
+
+		<Button
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/get_starting_pitch"
+			android:id="@+id/getStartingPitchButton"
+			android:layout_alignParentStart="true"
+			android:minWidth="150dp"
+			android:minHeight="75dp"
+			android:maxHeight="75dp"
+			android:maxWidth="150dp"/>
+
+		<Button
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/get_rhythm"
+			android:id="@+id/getRhythmButton"
+			android:layout_alignParentTop="true"
+			android:layout_toRightOf="@+id/getStartingPitchButton"
+			android:layout_toEndOf="@+id/getStartingPitchButton"
+			android:minWidth="150dp"
+			android:minHeight="75dp"
+			android:maxHeight="75dp"
+			android:maxWidth="150dp"/>
+
+		<Button
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/start_recording"
+			android:id="@+id/recordButton"
+			android:layout_below="@+id/getStartingPitchButton"
+			android:layout_alignParentLeft="true"
+			android:layout_alignParentStart="true"
+			android:minWidth="150dp"
+			android:minHeight="75dp"
+			android:maxWidth="150dp"
+			android:maxHeight="75dp"/>
+
+		<Button
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/playback_recording"
+			android:id="@+id/playRecordingButton"
+			android:layout_below="@+id/getRhythmButton"
+			android:layout_alignLeft="@+id/getRhythmButton"
+			android:layout_alignStart="@+id/getRhythmButton"
+			android:minWidth="150dp"
+			android:minHeight="75dp"
+			android:maxHeight="75dp"
+			android:maxWidth="150dp"/>
+
+		<Button
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/playback_reference"
+			android:id="@+id/playReferenceButton"
+			android:layout_below="@+id/recordButton"
+			android:layout_alignParentLeft="true"
+			android:layout_alignParentStart="true"
+			android:minWidth="150dp"
+			android:minHeight="75dp"
+			android:maxWidth="150dp"
+			android:maxHeight="75dp"/>
+
+		<Button
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/next_exercise"
+			android:id="@+id/nextExerciseButton"
+			android:layout_below="@+id/playRecordingButton"
+			android:layout_alignLeft="@+id/playRecordingButton"
+			android:layout_alignStart="@+id/playRecordingButton"
+			android:minWidth="150dp"
+			android:minHeight="75dp"
+			android:maxHeight="75dp"
+			android:maxWidth="150dp"/>
+	</RelativeLayout>
+
+</RelativeLayout>

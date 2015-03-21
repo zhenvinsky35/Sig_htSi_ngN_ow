@@ -2,6 +2,7 @@ package org.altervista.zhen.sightsingnow;
 
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -29,51 +30,12 @@ public class MusicNotationView extends View
     private Paint mStaffLinesPaint;
 	private Paint mDotPaint;
 
-    private Clef mClef = Clef.TREBLE; //todo remove this placeholder
+    private Clef mClef ;
     private KeySignature mKeySignature;
     private byte mTimeSignatureUpperNum;
     private byte mTimeSignatureLowerNum;
-    private EnhancedNote[][] mMusicalPhrase =
-			{
-					{
-							new EnhancedNote(JMC.C4,
-									new EnhancedDuration[] {EnhancedDuration.EIGHTH_NOTE},
-									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.C1, Accidental.NONE)),
-							new EnhancedNote(JMC.E4,
-									new EnhancedDuration[] {EnhancedDuration.EIGHTH_NOTE},
-									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.E1, Accidental.NONE)),
-							new EnhancedNote(JMC.G4,
-									new EnhancedDuration[] {EnhancedDuration.EIGHTH_NOTE},
-									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.G1, Accidental.NONE)),
-							new EnhancedNote(JMC.C5,
-									new EnhancedDuration[] {EnhancedDuration.EIGHTH_NOTE},
-									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.C2, Accidental.NONE)),
-							new EnhancedNote(JMC.B4,
-									new EnhancedDuration[] {EnhancedDuration.QUARTER_NOTE},
-									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.B2, Accidental.NONE)),
-							new EnhancedNote(JMC.B4,
-									new EnhancedDuration[] {EnhancedDuration.EIGHTH_NOTE},
-									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.B2, Accidental.NONE)),
-							new EnhancedNote(JMC.G4,
-									new EnhancedDuration[] {EnhancedDuration.EIGHTH_NOTE},
-									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.G1, Accidental.NONE)),
-					},
-					{
-							new EnhancedNote(JMC.A4,
-									new EnhancedDuration[] {EnhancedDuration.QUARTER_NOTE},
-									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.A2, Accidental.NONE)),
-							new EnhancedNote(JMC.A4,
-									new EnhancedDuration[] {EnhancedDuration.EIGHTH_NOTE},
-									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.A2, Accidental.NONE)),
-							new EnhancedNote(JMC.F4,
-									new EnhancedDuration[] {EnhancedDuration.EIGHTH_NOTE},
-									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.F1, Accidental.NONE)),
-							new EnhancedNote(JMC.G4,
-									new EnhancedDuration[] {EnhancedDuration.HALF_NOTE},
-									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.G1, Accidental.NONE)),
 
-					}
-			};//todo remove this placeholder
+    private EnhancedNote[][] mMusicalPhrase;
 
     private Bitmap mTrebleClefBitmap;
     private Bitmap mBassClefBitmap;
@@ -171,7 +133,7 @@ public class MusicNotationView extends View
 		mThirtysecondNoteStemDownBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.thirtysecond_note_down);
     }
 
-    /**
+	/**
      * Sets the clef to be displayed.
      * @param clef The clef to be displayed
      */
@@ -191,6 +153,11 @@ public class MusicNotationView extends View
         invalidate();
     }
 
+	/**
+	 * Sets the time signature to be displayed.
+	 * @param upperNum The upper number in the time signature.
+	 * @param lowerNum The lower number in the time signature.
+	 */
     public void setTimeSignature(byte upperNum, byte lowerNum)
     {
         mTimeSignatureUpperNum = upperNum;
@@ -252,8 +219,6 @@ public class MusicNotationView extends View
 
         //adds a small empty space between the clef and key signature
         startX += canvas.getWidth() * smallEmptySpaceCoefficient;
-
-        mKeySignature = KeySignature.C_SHARP_MAJOR; //todo remove this later
 
         //gapBetweenLines * 2.5 is the height of the sharp sign, 60/190 is the width/height ratio of the sharp sign
         float widthOfSharp = gapBetweenLines * 2.5f * (60f/190f);
@@ -670,8 +635,6 @@ public class MusicNotationView extends View
         //adds a small gap between the key signature and the time signature
         startX += getWidth() * smallEmptySpaceCoefficient;
 
-        mTimeSignatureUpperNum = 4;
-        mTimeSignatureLowerNum = 4; //todo get rid of these placeholders!
         startX += drawTimeSignature(canvas, mTimeSignatureUpperNum, mTimeSignatureLowerNum, startX, lineFiveY, lineThreeY, gapBetweenLines);
 
         //no small empty space added here as one will be added in drawMusicalNotes(...)
@@ -2293,7 +2256,7 @@ public class MusicNotationView extends View
         int heightSpecSize = MeasureSpec.getSize(heightMeasureSpec);
         if (heightSpecMode == MeasureSpec.AT_MOST) //wrap content
         {
-            if (myWidth < heightSpecSize) //assumed that device is tilted vertically
+            if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) //device is in portrait, myWidth < heightSpecSize
             {
                 if (getRootView().getHeight() >= heightSpecSize)
                 {
@@ -2324,17 +2287,17 @@ public class MusicNotationView extends View
         setMeasuredDimension(myWidth, myHeight);
     }
 
-	private static final byte TREBLE_CLEF_NUMERICAL_IDENTIFIER = 0; //these are only intented to be used in the constructor of the Clef enum to resolve a forward reference problem
+	private static final byte TREBLE_NUMERICAL_IDENTIFIER = 0; //these are only intented to be used in the constructor of the Clef enum to resolve a forward reference problem
 	private static final byte BASS_CLEF_NUMERICAL_IDENTIFIER = 1;
 
     public static enum Clef
     {
-        TREBLE(MusicNotationView.TREBLE_CLEF_NUMERICAL_IDENTIFIER), BASS(MusicNotationView.BASS_CLEF_NUMERICAL_IDENTIFIER);
+        TREBLE(MusicNotationView.TREBLE_NUMERICAL_IDENTIFIER), BASS(MusicNotationView.BASS_CLEF_NUMERICAL_IDENTIFIER);
 
 		private static String LOG_TAG = Clef.class.getSimpleName();
 		//default visibility intended, these are intended to be used in other classes within the package
-		static final byte TREBLE_CLEF_NUMERICAL_IDENTIFIER = MusicNotationView.TREBLE_CLEF_NUMERICAL_IDENTIFIER;
-		static final byte BASS_CLEF_NUMERICAL_IDENTIFIER = MusicNotationView.BASS_CLEF_NUMERICAL_IDENTIFIER;
+		static final byte TREBLE_NUMERICAL_IDENTIFIER = MusicNotationView.TREBLE_NUMERICAL_IDENTIFIER;
+		static final byte BASS_NUMERICAL_IDENTIFIER = MusicNotationView.BASS_CLEF_NUMERICAL_IDENTIFIER;
 
 		private byte mNumericalIdentifier;
 		private Clef(byte numericalIdentifier) {numericalIdentifier = mNumericalIdentifier;}
@@ -2346,9 +2309,9 @@ public class MusicNotationView extends View
 		{
 			switch (numericalIdentifier)
 			{
-				case TREBLE_CLEF_NUMERICAL_IDENTIFIER:
+				case TREBLE_NUMERICAL_IDENTIFIER:
 					return TREBLE;
-				case BASS_CLEF_NUMERICAL_IDENTIFIER:
+				case BASS_NUMERICAL_IDENTIFIER:
 					return BASS;
 				default: //assumes treble clef and logs an error
 					Log.e(LOG_TAG, "Value other than expected values passed into getClefFromNumericalIdentifier, assuming treble clef");
@@ -2392,496 +2355,4 @@ public class MusicNotationView extends View
 	{
 		UP, DOWN
 	}
-
-	/**
-	 * The first word indicates the octave that the note is in. The number that is after the first word indicates
-	 * the scale degree of the note. A "b" in front of the number indicates that the note is one semitone below
-	 * than the normal scale degree (ie: in C maj, ONE_2 is D natural, while ONE_b2 is D flat). An "s" in front of
-	 * the number indicates that the note is one semitone above the normal scale degree.
-	 */
-	/*
-	public static enum ScaleDegree
-	{
-		ONE_b1(-1, -1), ONE_1(0, 0), ONE_s1(1, 1), ONE_b2(1, 1), ONE_2(2, 2), ONE_s2(3, 3), ONE_b3(3, 2), ONE_3(4, 3), ONE_s3(5, 4),
-			ONE_b4(4, 4), ONE_4(5, 5), ONE_s4(6, 6), ONE_b5(6, 6), ONE_5(7, 7), ONE_s5(8, 8), ONE_b6(8, 7), ONE_6(9, 8), ONE_s6(10, 9),
-			ONE_b7(10, 9), ONE_7(11, 10), ONE_s7(12, 11),
-		TWO_b1(12-1, 12-1), TWO_1(12, 12), TWO_s1(12+1, 12+1), TWO_b2(12+1, 12+1), TWO_2(12+2, 12+2), TWO_s2(12+3, 12+3),
-			TWO_b3(12+3, 12+2), TWO_3(12+4, 12+3), TWO_s3(12+5, 12+4),TWO_b4(12+4, 12+4), TWO_4(12+5, 12+5), TWO_s4(12+6, 12+6),
-			TWO_b5(12+6, 12+6), TWO_5(12+7, 12+7), TWO_s5(12+8, 12+8), TWO_b6(12+8, 12+7), TWO_6(12+9, 12+8), TWO_s6(12+10, 12+9),
-			TWO_b7(12+10, 12+9), TWO_7(12+11, 12+10), TWO_s7(12+12, 12+11),
-		THREE_b1(24-1, 24-1), THREE_1(24, 24);
-
-		private final String LOG_TAG = ScaleDegree.class.getSimpleName();
-		private int mSemitonesOffFromMajorTonic;
-		private int mSemitonesOffFromMinorTonic;
-		private ScaleDegree(int semitonesOffFromMajorTonic, int semitonesOffFromMinorTonic)
-		{
-			mSemitonesOffFromMajorTonic = semitonesOffFromMajorTonic;
-			mSemitonesOffFromMinorTonic = semitonesOffFromMinorTonic;
-		}
-
-		protected int getSemitonesOffFromMajorTonic() { return mSemitonesOffFromMajorTonic; }
-		protected int getSemitonesOffFromMinorTonic() { return mSemitonesOffFromMinorTonic; }
-
-		public int getPitch(KeySignature keySignature, Clef clef)
-		{
-			switch (keySignature)
-			{
-				case C_MAJOR:
-					switch (clef)
-					{
-						case TREBLE:
-							return JMC.C4 + mSemitonesOffFromMajorTonic;
-							//no break statement needed due to the above return statement
-						case BASS:
-							return JMC.C3 + mSemitonesOffFromMajorTonic;
-						default:
-							Log.e(LOG_TAG, "Default condition w/ regards to clef triggered in switch statement");
-							return -1;
-					}
-				case G_MAJOR:
-					switch (clef)
-					{
-						case TREBLE:
-							return JMC.G3 + mSemitonesOffFromMajorTonic;
-						case BASS:
-							return JMC.G2 + mSemitonesOffFromMajorTonic;
-						default:
-							Log.e(LOG_TAG, "Default condition w/ regards to clef triggered in switch statement");
-							return -1;
-					}
-				case D_MAJOR:
-					switch (clef)
-					{
-						case TREBLE:
-							return JMC.D4 + mSemitonesOffFromMajorTonic;
-						case BASS:
-							return JMC.D3 + mSemitonesOffFromMajorTonic;
-						default:
-							Log.e(LOG_TAG, "Default condition w/ regards to clef triggered in switch statement");
-							return -1;
-					}
-				case A_MAJOR:
-					switch (clef)
-					{
-						case TREBLE:
-							return JMC.A3 + mSemitonesOffFromMajorTonic;
-						case BASS:
-							return JMC.A2 + mSemitonesOffFromMajorTonic;
-						default:
-							Log.e(LOG_TAG, "Default condition w/ regards to clef triggered in switch statement");
-							return -1;
-					}
-				case E_MAJOR:
-
-					switch (clef)
-					{
-						case TREBLE:
-							return JMC.E4 + mSemitonesOffFromMajorTonic;
-						case BASS:
-							return JMC.E3 + mSemitonesOffFromMajorTonic;
-						default:
-							Log.e(LOG_TAG, "Default condition w/ regards to clef triggered in switch statement");
-							return -1;
-					}
-				case B_MAJOR:
-					switch (clef)
-					{
-						case TREBLE:
-							return JMC.B3 + mSemitonesOffFromMajorTonic;
-						case BASS:
-							return JMC.B2 + mSemitonesOffFromMajorTonic;
-						default:
-							Log.e(LOG_TAG, "Default condition w/ regards to clef triggered in switch statement");
-							return -1;
-					}
-				case F_SHARP_MAJOR:
-					switch (clef)
-					{
-						case TREBLE:
-							return JMC.FS4 + mSemitonesOffFromMajorTonic;
-						case BASS:
-							return JMC.FS3 + mSemitonesOffFromMajorTonic;
-						default:
-							Log.e(LOG_TAG, "Default condition w/ regards to clef triggered in switch statement");
-							return -1;
-					}
-				case C_SHARP_MAJOR:
-					switch (clef)
-					{
-						case TREBLE:
-							return JMC.CS4 + mSemitonesOffFromMajorTonic;
-						case BASS:
-							return JMC.CS3 + mSemitonesOffFromMajorTonic;
-						default:
-							Log.e(LOG_TAG, "Default condition w/ regards to clef triggered in switch statement");
-							return -1;
-					}
-				case F_MAJOR:
-					switch (clef)
-					{
-						case TREBLE:
-							return JMC.F4 + mSemitonesOffFromMajorTonic;
-						case BASS:
-							return JMC.F3 + mSemitonesOffFromMajorTonic;
-						default:
-							Log.e(LOG_TAG, "Default condition w/ regards to clef triggered in switch statement");
-							return -1;
-					}
-				case B_FLAT_MAJOR:
-					switch (clef)
-					{
-						case TREBLE:
-							return JMC.BF3 + mSemitonesOffFromMajorTonic;
-						case BASS:
-							return JMC.BF2 + mSemitonesOffFromMajorTonic;
-						default:
-							Log.e(LOG_TAG, "Default condition w/ regards to clef triggered in switch statement");
-							return -1;
-					}
-				case E_FLAT_MAJOR:
-					switch (clef)
-					{
-						case TREBLE:
-							return JMC.EF4 + mSemitonesOffFromMajorTonic;
-						case BASS:
-							return JMC.EF3 + mSemitonesOffFromMajorTonic;
-						default:
-							Log.e(LOG_TAG, "Default condition w/ regards to clef triggered in switch statement");
-							return -1;
-					}
-				case A_FLAT_MAJOR:
-					switch (clef)
-					{
-						case TREBLE:
-							return JMC.AF3 + mSemitonesOffFromMajorTonic;
-						case BASS:
-							return JMC.AF2 + mSemitonesOffFromMajorTonic;
-						default:
-							Log.e(LOG_TAG, "Default condition w/ regards to clef triggered in switch statement");
-							return -1;
-					}
-				case D_FLAT_MAJOR:
-					switch (clef)
-					{
-						case TREBLE:
-							return JMC.DF4 + mSemitonesOffFromMajorTonic;
-						case BASS:
-							return JMC.DF3 + mSemitonesOffFromMajorTonic;
-						default:
-							Log.e(LOG_TAG, "Default condition w/ regards to clef triggered in switch statement");
-							return -1;
-					}
-				case G_FLAT_MAJOR:
-					switch (clef)
-					{
-						case TREBLE:
-							return JMC.GF4 + mSemitonesOffFromMajorTonic;
-						case BASS:
-							return JMC.GF3 + mSemitonesOffFromMajorTonic;
-						default:
-							Log.e(LOG_TAG, "Default condition w/ regards to clef triggered in switch statement");
-							return -1;
-					}
-				case C_FLAT_MAJOR:
-					switch (clef)
-					{
-						case TREBLE:
-							return JMC.B3 + mSemitonesOffFromMajorTonic;
-						case BASS:
-							return JMC.B2 + mSemitonesOffFromMajorTonic;
-						default:
-							Log.e(LOG_TAG, "Default condition w/ regards to clef triggered in switch statement");
-							return -1;
-					}
-				case A_MINOR:
-					switch (clef)
-					{
-						case TREBLE:
-							return JMC.A3 + mSemitonesOffFromMinorTonic;
-						case BASS:
-							return JMC.A2 + mSemitonesOffFromMinorTonic;
-						default:
-							Log.e(LOG_TAG, "Default condition w/ regards to clef triggered in switch statement");
-							return -1;
-					}
-				case E_MINOR:
-					switch (clef)
-					{
-						case TREBLE:
-							return JMC.E4 + mSemitonesOffFromMinorTonic;
-						case BASS:
-							return JMC.E3 + mSemitonesOffFromMinorTonic;
-						default:
-							Log.e(LOG_TAG, "Default condition w/ regards to clef triggered in switch statement");
-							return -1;
-					}
-				case B_MINOR:
-					switch (clef)
-					{
-						case TREBLE:
-							return JMC.B3 + mSemitonesOffFromMinorTonic;
-						case BASS:
-							return JMC.B2 + mSemitonesOffFromMinorTonic;
-						default:
-							Log.e(LOG_TAG, "Default condition w/ regards to clef triggered in switch statement");
-							return -1;
-					}
-				case F_SHARP_MINOR:
-					switch (clef)
-					{
-						case TREBLE:
-							return JMC.FS4 + mSemitonesOffFromMinorTonic;
-						case BASS:
-							return JMC.FS3 + mSemitonesOffFromMinorTonic;
-						default:
-							Log.e(LOG_TAG, "Default condition w/ regards to clef triggered in switch statement");
-							return -1;
-					}
-				case C_SHARP_MINOR:
-					switch (clef)
-					{
-						case TREBLE:
-							return JMC.CS4 + mSemitonesOffFromMinorTonic;
-						case BASS:
-							return JMC.CS3 + mSemitonesOffFromMinorTonic;
-						default:
-							Log.e(LOG_TAG, "Default condition w/ regards to clef triggered in switch statement");
-							return -1;
-					}
-				case G_SHARP_MINOR:
-					switch (clef)
-					{
-						case TREBLE:
-							return JMC.GS3 + mSemitonesOffFromMinorTonic;
-						case BASS:
-							return JMC.GS2 + mSemitonesOffFromMinorTonic;
-						default:
-							Log.e(LOG_TAG, "Default condition w/ regards to clef triggered in switch statement");
-							return -1;
-					}
-				case D_SHARP_MINOR:
-					switch (clef)
-					{
-						case TREBLE:
-							return JMC.DS4 + mSemitonesOffFromMinorTonic;
-						case BASS:
-							return JMC.DS3 + mSemitonesOffFromMinorTonic;
-						default:
-							Log.e(LOG_TAG, "Default condition w/ regards to clef triggered in switch statement");
-							return -1;
-					}
-				case A_SHARP_MINOR:
-					switch (clef)
-					{
-						case TREBLE:
-							return JMC.AS3 + mSemitonesOffFromMinorTonic;
-						case BASS:
-							return JMC.AS2 + mSemitonesOffFromMinorTonic;
-						default:
-							Log.e(LOG_TAG, "Default condition w/ regards to clef triggered in switch statement");
-							return -1;
-					}
-				case D_MINOR:
-					switch (clef)
-					{
-						case TREBLE:
-							return JMC.D4 + mSemitonesOffFromMinorTonic;
-						case BASS:
-							return JMC.D3 + mSemitonesOffFromMinorTonic;
-						default:
-							Log.e(LOG_TAG, "Default condition w/ regards to clef triggered in switch statement");
-							return -1;
-					}
-				case G_MINOR:
-					switch (clef)
-					{
-						case TREBLE:
-							return JMC.G3 + mSemitonesOffFromMinorTonic;
-						case BASS:
-							return JMC.G2 + mSemitonesOffFromMinorTonic;
-						default:
-							Log.e(LOG_TAG, "Default condition w/ regards to clef triggered in switch statement");
-							return -1;
-					}
-				case C_MINOR:
-					switch (clef)
-					{
-						case TREBLE:
-							return JMC.C4 + mSemitonesOffFromMinorTonic;
-						case BASS:
-							return JMC.C3 + mSemitonesOffFromMinorTonic;
-						default:
-							Log.e(LOG_TAG, "Default condition w/ regards to clef triggered in switch statement");
-							return -1;
-					}
-				case F_MINOR:
-					switch (clef)
-					{
-						case TREBLE:
-							return JMC.F4 + mSemitonesOffFromMinorTonic;
-						case BASS:
-							return JMC.F3 + mSemitonesOffFromMinorTonic;
-						default:
-							Log.e(LOG_TAG, "Default condition w/ regards to clef triggered in switch statement");
-							return -1;
-					}
-				case B_FLAT_MINOR:
-					switch (clef)
-					{
-						case TREBLE:
-							return JMC.BF3 + mSemitonesOffFromMinorTonic;
-						case BASS:
-							return JMC.BF2 + mSemitonesOffFromMinorTonic;
-						default:
-							Log.e(LOG_TAG, "Default condition w/ regards to clef triggered in switch statement");
-							return -1;
-					}
-				case E_FLAT_MINOR:
-					switch (clef)
-					{
-						case TREBLE:
-							return JMC.EF4 + mSemitonesOffFromMinorTonic;
-						case BASS:
-							return JMC.EF3 + mSemitonesOffFromMinorTonic;
-						default:
-							Log.e(LOG_TAG, "Default condition w/ regards to clef triggered in switch statement");
-							return -1;
-					}
-				case A_FLAT_MINOR:
-					switch (clef)
-					{
-						case TREBLE:
-							return JMC.AF3 + mSemitonesOffFromMinorTonic;
-						case BASS:
-							return JMC.AF2 + mSemitonesOffFromMinorTonic;
-						default:
-							Log.e(LOG_TAG, "Default condition w/ regards to clef triggered in switch statement");
-							return -1;
-					}
-				case ATONAL:
-				case NO_KEY_SIGNATURE:
-					switch (clef)
-					{
-						case TREBLE:
-							return JMC.C4 + mSemitonesOffFromMajorTonic;
-						//no break statement needed due to the above return statement
-						case BASS:
-							return JMC.C3 + mSemitonesOffFromMajorTonic;
-						default:
-							Log.e(LOG_TAG, "Default condition w/ regards to clef triggered in switch statement");
-							return -1;
-					}
-				default:
-					Log.e(LOG_TAG, "Default condition w/ regards to keySignature triggered in switch statement");
-					return -1;
-			}
-		}
-
-		YPositionOfPitchWithLedgerLines getYPositionOfPitchWithLedgerLines(KeySignature keySignature, Clef clef,
-					float lineOneY, float lineTwoY, float lineThreeY, float lineFourY, float lineFiveY, float gapBetweenLines)
-				//default visibility to restrict access to within this package
-		{
-			switch (keySignature)
-			{
-				case C_MAJOR:
-					switch (clef)
-					{
-						case TREBLE:
-							switch (this)
-							{
-								case ONE_b1:
-								case ONE_1:
-								case ONE_s1:
-									return new YPositionOfPitchWithLedgerLines(lineOneY + gapBetweenLines, 1, PositionOfLedgerLines.BELOW_THE_STAFF);
-								case ONE_b2:
-								case ONE_2:
-								case ONE_s2:
-									return new YPositionOfPitchWithLedgerLines(lineOneY + (gapBetweenLines / 2), 0, PositionOfLedgerLines.NO_LEDGER_LINES);
-								case ONE_b3:
-								case ONE_3:
-								case ONE_s3:
-									return new Y
-							}
-						case BASS:
-							break;
-						default:
-							break;
-					}
-				case G_MAJOR:
-					switch (clef)
-					{
-						case TREBLE:
-							break;
-						case BASS:
-							break;
-						default:
-							break;
-					}
-				case D_MAJOR:
-					break;
-				case A_MAJOR:
-					break;
-				case E_MAJOR:
-					break;
-				case B_MAJOR:
-					break;
-				case F_SHARP_MAJOR:
-					break;
-				case C_SHARP_MAJOR:
-					break;
-				case F_MAJOR:
-					break;
-				case B_FLAT_MAJOR:
-					break;
-				case E_FLAT_MAJOR:
-					break;
-				case A_FLAT_MAJOR:
-					break;
-				case D_FLAT_MAJOR:
-					break;
-				case G_FLAT_MAJOR:
-					break;
-				case C_FLAT_MAJOR:
-					break;
-				case A_MINOR:
-					break;
-				case E_MINOR:
-					break;
-				case B_MINOR:
-					break;
-				case F_SHARP_MINOR:
-					break;
-				case C_SHARP_MINOR:
-					break;
-				case G_SHARP_MINOR:
-					break;
-				case D_SHARP_MINOR:
-					break;
-				case A_SHARP_MINOR:
-					break;
-				case D_MINOR:
-					break;
-				case G_MINOR:
-					break;
-				case C_MINOR:
-					break;
-				case F_MINOR:
-					break;
-				case B_FLAT_MINOR:
-					break;
-				case E_FLAT_MINOR:
-					break;
-				case A_FLAT_MINOR:
-					break;
-				case ATONAL:
-					break;
-				case NO_KEY_SIGNATURE:
-					break;
-				default:
-					break;
-			}
-		}
-	}
-	*/
 }

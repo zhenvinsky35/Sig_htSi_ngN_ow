@@ -9,26 +9,15 @@ public class EnhancedNote extends Note
 
 	private BaseNoteAndOutOfKeySignatureAccidental mBaseNoteAndOutOfKeySignatureAccidental;
 
+	/**
+	 * @param pitch The pitch of the note in JMC integer constants, assume treble clef.
+	 * @param enhancedDurations The duration of the note. Put multiple durations into the array if they are to be tied. Otherwise, put only one note into the array. Note that drawing ties is currently unsupported.
+	 * @param baseNoteAndOutOfKeySignatureAccidental The base note (note without any accidental applied) and any non-key signature accidental to be applied.
+	 */
 	public EnhancedNote(int pitch, EnhancedDuration[] enhancedDurations,
 						BaseNoteAndOutOfKeySignatureAccidental baseNoteAndOutOfKeySignatureAccidental)
 	{
 		super(pitch, getDurationFromEnhancedDurations(enhancedDurations));
-		mEnhancedDurations = enhancedDurations;
-		mBaseNoteAndOutOfKeySignatureAccidental = baseNoteAndOutOfKeySignatureAccidental;
-	}
-
-	public EnhancedNote(int pitch, EnhancedDuration[] enhancedDurations,
-						BaseNoteAndOutOfKeySignatureAccidental baseNoteAndOutOfKeySignatureAccidental, int dynamic)
-	{
-		super(pitch, getDurationFromEnhancedDurations(enhancedDurations), dynamic);
-		mEnhancedDurations = enhancedDurations;
-		mBaseNoteAndOutOfKeySignatureAccidental = baseNoteAndOutOfKeySignatureAccidental;
-	}
-
-	public EnhancedNote(int pitch, EnhancedDuration[] enhancedDurations,
-						BaseNoteAndOutOfKeySignatureAccidental baseNoteAndOutOfKeySignatureAccidental, int dynamic, double pan)
-	{
-		super(pitch, getDurationFromEnhancedDurations(enhancedDurations), dynamic, pan);
 		mEnhancedDurations = enhancedDurations;
 		mBaseNoteAndOutOfKeySignatureAccidental = baseNoteAndOutOfKeySignatureAccidental;
 	}
