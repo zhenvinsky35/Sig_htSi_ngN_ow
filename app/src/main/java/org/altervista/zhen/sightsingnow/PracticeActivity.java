@@ -129,7 +129,8 @@ public class PracticeActivity extends ActionBarActivity
 
 			//resets the recording button
 			final Button recordButton = (Button) rootView.findViewById(R.id.recordButton);
-			setRecordButtonToNotRecordingState(recordButton);
+			final Button playRecordingButton = (Button) rootView.findViewById(R.id.playRecordingButton);
+			setRecordButtonToNotRecordingState(recordButton, playRecordingButton);
 
 			mMusicStaffTop.setClef(((PracticeActivity) getActivity()).getClef());
 			if (portraitOrientation)
@@ -142,7 +143,6 @@ public class PracticeActivity extends ActionBarActivity
 
 			Button getStartingPitchButton = (Button) rootView.findViewById(R.id.getStartingPitchButton);
 			final Button getRhythmButton = (Button) rootView.findViewById(R.id.getRhythmButton);
-			final Button playRecordingButton = (Button) rootView.findViewById(R.id.playRecordingButton);
 			final Button playReferenceButton = (Button) rootView.findViewById(R.id.playReferenceButton);
 			Button nextExerciseButton = (Button) rootView.findViewById(R.id.nextExerciseButton);
 
@@ -152,6 +152,8 @@ public class PracticeActivity extends ActionBarActivity
 				public void onClick(View v)
 				{
 					releaseAllMediaPlayers();
+					setRecordButtonToNotRecordingState(recordButton, playRecordingButton);
+
 					PracticeMusic practiceMusic = ((PracticeActivity) getActivity()).getPracticeMusic();
 					if (practiceMusic == null)
 					{
@@ -205,6 +207,7 @@ public class PracticeActivity extends ActionBarActivity
 				public void onClick(View v)
 				{
 					releaseAllMediaPlayers();
+					setRecordButtonToNotRecordingState(recordButton, playRecordingButton);
 
 					if (mRhythmAudioFile == null)
 					{
@@ -309,13 +312,18 @@ public class PracticeActivity extends ActionBarActivity
 							//a RuntimeException is intentionally thrown if no data has been received when stop() is called
 							Log.w(LOG_TAG, e.getMessage());
 						}
+						mMediaRecorder.reset();
 						mMediaRecorder.release();
 
-						setRecordButtonToNotRecordingState((Button) v);
+						mMediaRecorder = null;
+
+						setRecordButtonToNotRecordingState(recordButton, playRecordingButton);
 						isRecording = false;
 					}
 					else //not recording
 					{
+						releaseAllMediaPlayers();
+
 						FileOutputStream fileOutputStream;
 						try
 						{
@@ -329,7 +337,7 @@ public class PracticeActivity extends ActionBarActivity
 							mMediaRecorder.prepare();
 							mMediaRecorder.start();
 
-							setRecordButtonToRecordingState((Button) v);
+							setRecordButtonToRecordingState(recordButton, playRecordingButton);
 							isRecording = true;
 						}
 						catch (Exception e)
@@ -353,6 +361,7 @@ public class PracticeActivity extends ActionBarActivity
 					}
 					//else
 					releaseAllMediaPlayers();
+					//it's not necessary to set record button to not recording state as the click doesn't do anything if recording is happening
 
 					mRecordingMediaPlayer = MediaPlayer.create(getActivity(), Uri.parse(mRecordingAudioFile.toURI().toString()));
 					if (mRecordingMediaPlayer == null)
@@ -377,6 +386,7 @@ public class PracticeActivity extends ActionBarActivity
 				public void onClick(View v)
 				{
 					releaseAllMediaPlayers();
+					setRecordButtonToNotRecordingState(recordButton, playRecordingButton);
 
 					PracticeMusic practiceMusic = ((PracticeActivity) getActivity()).getPracticeMusic();
 					if (practiceMusic == null)
@@ -436,8 +446,7 @@ public class PracticeActivity extends ActionBarActivity
 				{
 					releaseAllMediaPlayers();
 					deleteAllAudioFiles();
-					setRecordButtonToNotRecordingState(recordButton);
-					isRecording = false;
+					setRecordButtonToNotRecordingState(recordButton, playRecordingButton);
 
 					int numIdToExclude = ((PracticeActivity) getActivity()).getPracticeMusic().getNumericalIdentifier();
 					((PracticeActivity) getActivity()).setPracticeMusic(null); //forces drawNewMusic() to select a random piece of music
@@ -502,16 +511,18 @@ public class PracticeActivity extends ActionBarActivity
 			}
 		}
 
-		private void setRecordButtonToNotRecordingState(Button button)
+		private void setRecordButtonToNotRecordingState(Button recordButton, Button playbackRecordButton)
 		{
-			button.setText(R.string.start_recording);
-			button.setTextColor(getResources().getColor(R.color.recordButtonNotRecording));
+			recordButton.setText(R.string.start_recording);
+			recordButton.setTextColor(getResources().getColor(R.color.recordButtonNotRecording));
+			playbackRecordButton.setEnabled(true);
 		}
 
-		private void setRecordButtonToRecordingState(Button button)
+		private void setRecordButtonToRecordingState(Button recordButton, Button playbackRecordButton)
 		{
-			button.setText(R.string.stop_recording);
-			button.setTextColor(getResources().getColor(R.color.recordButtonRecording));
+			recordButton.setText(R.string.stop_recording);
+			recordButton.setTextColor(getResources().getColor(R.color.recordButtonRecording));
+			playbackRecordButton.setEnabled(false);
 		}
 
 		private void releaseAllMediaPlayers()
@@ -534,7 +545,10 @@ public class PracticeActivity extends ActionBarActivity
 			}
 			if (mMediaRecorder != null)
 			{
+				mMediaRecorder.reset();
 				mMediaRecorder.release();
+				mMediaRecorder = null;
+				isRecording = false;
 			}
 		}
 

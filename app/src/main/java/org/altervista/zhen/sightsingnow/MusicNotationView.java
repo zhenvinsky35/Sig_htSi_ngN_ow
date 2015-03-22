@@ -194,6 +194,9 @@ public class MusicNotationView extends View
         canvas.drawLine(0, lineTwoY, canvas.getWidth(), lineTwoY + 1, mStaffLinesPaint);
         canvas.drawLine(0, lineOneY, canvas.getWidth(), lineOneY + 1, mStaffLinesPaint);
 
+		//draws last barline
+		canvas.drawLine(getWidth() - 1, lineFiveY, getWidth(), lineOneY + 1, mStaffLinesPaint);
+
         float startX = 0;
 
         float clefWidth = canvas.getWidth() * 0.06f;
