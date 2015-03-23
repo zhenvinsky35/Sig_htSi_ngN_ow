@@ -30,7 +30,9 @@ import jm.util.Write;
 
 import static org.altervista.zhen.sightsingnow.MusicNotationView.*;
 
-
+/**
+ * The activity for the practice screen.
+ */
 public class PracticeActivity extends ActionBarActivity
 {
 	static final String EXTRA_CLEF = "org.altervista.zhen.sightsingnow.CLEF"; //default visibility
@@ -467,6 +469,7 @@ public class PracticeActivity extends ActionBarActivity
 		}
 
 		/**
+		 * Draw music
 		 * @param practiceMusicNumIdToExclude The numerical identifier of the PracticeMusic to not repeat.
 		 */
 		private void drawNewMusic(int practiceMusicNumIdToExclude)
@@ -488,6 +491,7 @@ public class PracticeActivity extends ActionBarActivity
 			mMusicStaffTop.setKeySignature(keySignature);
 			mMusicStaffTop.setTimeSignature(timeSignatureUpperNum, timeSignatureLowerNum);
 
+			//split the musical phrase into 2 bars if the device is in portrait orientation
 			if (portraitOrientation)
 			{
 				EnhancedNote[][] musicalPhraseTop, musicalPhraseBottom;
@@ -520,6 +524,11 @@ public class PracticeActivity extends ActionBarActivity
 			}
 		}
 
+		/**
+		 * Enables the button that plays back the recording and turns the record button into a "start recording" button.
+		 * @param recordButton The button that starts/stops recording.
+		 * @param playbackRecordButton The button that plays back the recording.
+		 */
 		private void setRecordButtonToNotRecordingState(Button recordButton, Button playbackRecordButton)
 		{
 			recordButton.setText(R.string.start_recording);
@@ -527,6 +536,11 @@ public class PracticeActivity extends ActionBarActivity
 			playbackRecordButton.setEnabled(true);
 		}
 
+		/**
+		 * Disables the button that plays back the recording and turns the record button into a "stop recording" button.
+		 * @param recordButton The button that starts/stops recording.
+		 * @param playbackRecordButton The button that plays back recording.
+		 */
 		private void setRecordButtonToRecordingState(Button recordButton, Button playbackRecordButton)
 		{
 			recordButton.setText(R.string.stop_recording);
@@ -534,6 +548,10 @@ public class PracticeActivity extends ActionBarActivity
 			playbackRecordButton.setEnabled(false);
 		}
 
+		/**
+		 * Reset MediaPlayers and the MediaRecorder, set the references to the MediaPlayers and the MediaRecorder to null, and
+		 * sets isRecording to false.
+		 */
 		private void releaseAllMediaPlayers()
 		{
 			if (mStartingPitchMediaPlayer != null)
@@ -585,6 +603,9 @@ public class PracticeActivity extends ActionBarActivity
 			}
 		}
 
+		/**
+		 * Delete all audio files and sets their references to null.
+		 */
 		private void deleteAllAudioFiles()
 		{
 			if (mStartingPitchAudioFile != null)

@@ -10,10 +10,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-
+/**
+ * The activity for the welcome screen.
+ */
 public class WelcomeScreenActivity extends ActionBarActivity
 {
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{

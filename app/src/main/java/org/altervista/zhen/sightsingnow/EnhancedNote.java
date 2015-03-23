@@ -3,6 +3,9 @@ package org.altervista.zhen.sightsingnow;
 import jm.JMC;
 import jm.music.data.Note;
 
+/**
+ * The notes that are designed for use with MusicNotationView.
+ */
 public class EnhancedNote extends Note
 {
 	private EnhancedDuration[] mEnhancedDurations;
@@ -22,11 +25,18 @@ public class EnhancedNote extends Note
 		mBaseNoteAndOutOfKeySignatureAccidental = baseNoteAndOutOfKeySignatureAccidental;
 	}
 
+	/**
+	 * @return The base note and non-key signature accidental.
+	 */
 	public BaseNoteAndOutOfKeySignatureAccidental getBaseNoteAndOutOfKeySignatureAccidental()
 	{
 		return mBaseNoteAndOutOfKeySignatureAccidental;
 	}
 
+	/**
+	 * @param enhancedDurations The enhanced duration array to convert into normal durations.
+	 * @return The normal duration associated with the sum of all of the notes in the enhanced duration array.
+	 */
 	private static double getDurationFromEnhancedDurations(EnhancedDuration[] enhancedDurations)
     {
         double duration = 0;
@@ -39,6 +49,9 @@ public class EnhancedNote extends Note
 
 	public EnhancedDuration[] getEnhancedDurations() {return mEnhancedDurations;}
 
+	/**
+	 * Durations intended for use with EnhancedNote.
+	 */
 	public static enum EnhancedDuration
 	{
 		WHOLE_NOTE(JMC.WHOLE_NOTE), DOTTED_WHOLE_NOTE(JMC.WHOLE_NOTE * 1.5), DOUBLE_DOTTED_WHOLE_NOTE(JMC.WHOLE_NOTE * 1.75),
@@ -54,7 +67,6 @@ public class EnhancedNote extends Note
 		private EnhancedDuration(double duration) {mDuration = duration;}
 
 		/**
-		 * Returns the duration in the format of a JMC floating-point constant, the type used by jm.music.data.Note
 		 * @return The duration in the format of a JMC floating-point constant, the type used by jm.music.data.Note
 		 */
 		public double getDuration() {return mDuration;}

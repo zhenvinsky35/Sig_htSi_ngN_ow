@@ -658,14 +658,6 @@ public class MusicNotationView extends View
     private void drawTrebleClef(Canvas canvas, float clefWidth)
     {
         RectF coordinates = new RectF(0, 0, clefWidth, canvas.getHeight());
-        if (mTrebleClefBitmap == null)
-        {
-            Bitmap trebleClef = BitmapFactory.decodeResource(getResources(), R.drawable.treble_clef);
-            canvas.drawBitmap(trebleClef, null, coordinates, null);
-            logNoPreInitializedFigure("mTrebleClefBitmap");
-            return;
-        }
-        //else
         canvas.drawBitmap(mTrebleClefBitmap, null, coordinates, null);
     }
 
@@ -680,14 +672,6 @@ public class MusicNotationView extends View
     private void drawBassClef(Canvas canvas, float clefWidth, float lineTwoY, float lineFiveY, float gapBetweenLines)
     {
         RectF coordinates = new RectF(0, lineFiveY, clefWidth, lineTwoY + (gapBetweenLines / 2));
-        if (mBassClefBitmap == null)
-        {
-            Bitmap bassClef = BitmapFactory.decodeResource(getResources(), R.drawable.bass_clef);
-            canvas.drawBitmap(bassClef, null, coordinates, null);
-            logNoPreInitializedFigure("mBassClefBitmap");
-            return;
-        }
-        //else
         canvas.drawBitmap(mBassClefBitmap, null, coordinates, null);
     }
 
@@ -702,14 +686,6 @@ public class MusicNotationView extends View
     {
 		float width = gapBetweenLines * 2.5f * (60f/190f);
         RectF coordinates = new RectF(startX, lineY - (gapBetweenLines * 1.25f), startX + width, lineY + (gapBetweenLines * 1.25f));
-        if (mSharpSymbolBitmap == null)
-        {
-            Bitmap sharpSymbol = BitmapFactory.decodeResource(getResources(), R.drawable.sharp_symbol);
-            canvas.drawBitmap(sharpSymbol, null, coordinates, null);
-            logNoPreInitializedFigure("mSharpSymbolBitmap");
-            return;
-        }
-        //else
         canvas.drawBitmap(mSharpSymbolBitmap, null, coordinates, null);
     }
 
@@ -724,14 +700,6 @@ public class MusicNotationView extends View
     {
 		float width = gapBetweenLines * 2.5f * (60f/190f);
         RectF coordinates = new RectF(startX, lineY - (gapBetweenLines * 1.75f), startX + width, lineY + (gapBetweenLines * 0.75f));
-        if (mSharpSymbolBitmap == null)
-        {
-            Bitmap sharpSymbol = BitmapFactory.decodeResource(getResources(), R.drawable.sharp_symbol);
-            canvas.drawBitmap(sharpSymbol, null, coordinates, null);
-            logNoPreInitializedFigure("mSharpSymbolBitmap");
-            return;
-        }
-        //else
         canvas.drawBitmap(mSharpSymbolBitmap, null, coordinates, null);
     }
 
@@ -746,14 +714,6 @@ public class MusicNotationView extends View
     {
 		float width = gapBetweenLines * 2.5f * (60f/190f);
         RectF coordinates = new RectF(startX, lineY - (gapBetweenLines * 0.75f), startX + width, lineY + (gapBetweenLines * 1.75f));
-        if (mSharpSymbolBitmap == null)
-        {
-            Bitmap sharpSymbol = BitmapFactory.decodeResource(getResources(), R.drawable.sharp_symbol);
-            canvas.drawBitmap(sharpSymbol, null, coordinates, null);
-            logNoPreInitializedFigure("mSharpSymbolBitmap");
-            return;
-        }
-        //else
         canvas.drawBitmap(mSharpSymbolBitmap, null, coordinates, null);
     }
 
@@ -768,14 +728,6 @@ public class MusicNotationView extends View
     {
 		float width = gapBetweenLines * 2f * (60f/130f);
         RectF coordinates = new RectF(startX, lineY - (gapBetweenLines * 1.5f), startX + width, lineY + (gapBetweenLines * 0.5f));
-        if (mFlatSymbolBitmap == null)
-        {
-            Bitmap flatSymbol = BitmapFactory.decodeResource(getResources(), R.drawable.flat_symbol);
-            canvas.drawBitmap(flatSymbol, null, coordinates, null);
-            logNoPreInitializedFigure("mFlatSymbolBitmap");
-            return;
-        }
-        //else
         canvas.drawBitmap(mFlatSymbolBitmap, null, coordinates, null);
     }
 
@@ -790,14 +742,6 @@ public class MusicNotationView extends View
     {
 		float width = gapBetweenLines * 2f * (60f/130f);
         RectF coordinates = new RectF(startX, lineY - (gapBetweenLines * 2f), startX + width, lineY);
-        if (mFlatSymbolBitmap == null)
-        {
-            Bitmap flatSymbol = BitmapFactory.decodeResource(getResources(), R.drawable.flat_symbol);
-            canvas.drawBitmap(flatSymbol, null, coordinates, null);
-            logNoPreInitializedFigure("mFlatSymbolBitmap");
-            return;
-        }
-        //else
         canvas.drawBitmap(mFlatSymbolBitmap, null, coordinates, null);
     }
 
@@ -812,29 +756,20 @@ public class MusicNotationView extends View
     {
 		float width = gapBetweenLines * 2f * (60f/130f);
         RectF coordinates = new RectF(startX, lineY - gapBetweenLines, startX + width, lineY + gapBetweenLines);
-        if (mFlatSymbolBitmap == null)
-        {
-            Bitmap flatSymbol = BitmapFactory.decodeResource(getResources(), R.drawable.flat_symbol);
-            canvas.drawBitmap(flatSymbol, null, coordinates, null);
-            logNoPreInitializedFigure("mFlatSymbolBitmap");
-            return;
-        }
-        //else
         canvas.drawBitmap(mFlatSymbolBitmap, null, coordinates, null);
     }
 
+	/**
+	 * Draws a natural symbol on a line of the staff.
+	 * @param canvas The canvas to draw on
+	 * @param startX The X position to start drawing the symbol on
+	 * @param lineY The Y position of the line to draw the symbol on
+	 * @param gapBetweenLines The difference in Y between two lines on the staff
+	 */
 	private void drawNaturalOnLine(Canvas canvas, float startX, float lineY, float gapBetweenLines)
 	{
 		float width = gapBetweenLines * 3f * (60f/250f);
 		RectF coordinates = new RectF(startX, lineY - gapBetweenLines, startX + width, lineY + gapBetweenLines);
-		if (mNaturalSymbolBitmap == null)
-		{
-			Bitmap naturalSymbol = BitmapFactory.decodeResource(getResources(), R.drawable.natural_symbol);
-			canvas.drawBitmap(naturalSymbol, null, coordinates, null);
-			logNoPreInitializedFigure("mNaturalSymbolBitmap");
-			return;
-		}
-		//else
 		canvas.drawBitmap(mNaturalSymbolBitmap, null, coordinates, null);
 	}
 
@@ -982,131 +917,51 @@ public class MusicNotationView extends View
             {
                 case 0:
                     coordinates = new RectF(startXUpperNum, lineFiveY, startXUpperNum + widthOfZero, lineFiveY + heightOfNum);
-                    if (mTimeSignatureZeroBitmap == null)
-                    {
-                        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.time_signature_0);
-                        canvas.drawBitmap(bitmap, null, coordinates, null);
-                        logNoPreInitializedFigure("mTimeSignatureZeroBitmap");
-                        break;
-                    }
-                    //else
                     canvas.drawBitmap(mTimeSignatureZeroBitmap, null, coordinates, null);
                     startXUpperNum += widthOfZero;
                     break;
                 case 1:
                     coordinates = new RectF(startXUpperNum, lineFiveY, startXUpperNum + widthOfOne, lineFiveY + heightOfNum);
-                    if (mTimeSignatureOneBitmap == null)
-                    {
-                        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.time_signature_1);
-                        canvas.drawBitmap(bitmap, null, coordinates, null);
-                        logNoPreInitializedFigure("mTimeSignatureOneBitmap");
-                        break;
-                    }
-                    //else
                     canvas.drawBitmap(mTimeSignatureOneBitmap, null, coordinates, null);
                     startXUpperNum += widthOfOne;
                     break;
                 case 2:
                     coordinates = new RectF(startXUpperNum, lineFiveY, startXUpperNum + widthOfTwo, lineFiveY + heightOfNum);
-                    if (mTimeSignatureTwoBitmap == null)
-                    {
-                        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.time_signature_2);
-                        canvas.drawBitmap(bitmap, null, coordinates, null);
-                        logNoPreInitializedFigure("mTimeSignatureTwoBitmap");
-                        break;
-                    }
-                    //else
                     canvas.drawBitmap(mTimeSignatureTwoBitmap, null, coordinates, null);
                     startXUpperNum += widthOfTwo;
                     break;
                 case 3:
                     coordinates = new RectF(startXUpperNum, lineFiveY, startXUpperNum + widthOfThree, lineFiveY + heightOfNum);
-                    if (mTimeSignatureThreeBitmap == null)
-                    {
-                        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.time_signature_3);
-                        canvas.drawBitmap(bitmap, null, coordinates, null);
-                        logNoPreInitializedFigure("mTimeSignatureThreeBitmap");
-                        break;
-                    }
-                    //else
                     canvas.drawBitmap(mTimeSignatureThreeBitmap, null, coordinates, null);
                     startXUpperNum += widthOfThree;
                     break;
                 case 4:
                     coordinates = new RectF(startXUpperNum, lineFiveY, startXUpperNum + widthOfFour, lineFiveY + heightOfNum);
-                    if (mTimeSignatureFourBitmap == null)
-                    {
-                        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.time_signature_4);
-                        canvas.drawBitmap(bitmap, null, coordinates, null);
-                        logNoPreInitializedFigure("mTimeSignatureFourBitmap");
-                        break;
-                    }
-                    //else
                     canvas.drawBitmap(mTimeSignatureFourBitmap, null, coordinates, null);
                     startXUpperNum += widthOfFour;
                     break;
                 case 5:
                     coordinates = new RectF(startXUpperNum, lineFiveY, startXUpperNum + widthOfFive, lineFiveY + heightOfNum);
-                    if (mTimeSignatureFiveBitmap == null)
-                    {
-                        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.time_signature_5);
-                        canvas.drawBitmap(bitmap, null, coordinates, null);
-                        logNoPreInitializedFigure("mTimeSignatureFiveBitmap");
-                        break;
-                    }
-                    //else
                     canvas.drawBitmap(mTimeSignatureFiveBitmap, null, coordinates, null);
                     startXUpperNum += widthOfFive;
                     break;
                 case 6:
                     coordinates = new RectF(startXUpperNum, lineFiveY, startXUpperNum + widthOfSix, lineFiveY + heightOfNum);
-                    if (mTimeSignatureSixBitmap == null)
-                    {
-                        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.time_signature_6);
-                        canvas.drawBitmap(bitmap, null, coordinates, null);
-                        logNoPreInitializedFigure("mTimeSignatureSixBitmap");
-                        break;
-                    }
-                    //else
                     canvas.drawBitmap(mTimeSignatureSixBitmap, null, coordinates, null);
                     startXUpperNum += widthOfSix;
                     break;
                 case 7:
                     coordinates = new RectF(startXUpperNum, lineFiveY, startXUpperNum + widthOfSeven, lineFiveY + heightOfNum);
-                    if (mTimeSignatureSevenBitmap == null)
-                    {
-                        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.time_signature_7);
-                        canvas.drawBitmap(bitmap, null, coordinates, null);
-                        logNoPreInitializedFigure("mTimeSignatureSevenBitmap");
-                        break;
-                    }
-                    //else
                     canvas.drawBitmap(mTimeSignatureSevenBitmap, null, coordinates, null);
                     startXUpperNum += widthOfSeven;
                     break;
                 case 8:
                     coordinates = new RectF(startXUpperNum, lineFiveY, startXUpperNum + widthOfEight, lineFiveY + heightOfNum);
-                    if (mTimeSignatureEightBitmap == null)
-                    {
-                        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.time_signature_8);
-                        canvas.drawBitmap(bitmap, null, coordinates, null);
-                        logNoPreInitializedFigure("mTimeSignatureEightBitmap");
-                        break;
-                    }
-                    //else
                     canvas.drawBitmap(mTimeSignatureEightBitmap, null, coordinates, null);
                     startXUpperNum += widthOfEight;
                     break;
                 case 9:
                     coordinates = new RectF(startXUpperNum, lineFiveY, startXUpperNum + widthOfNine, lineFiveY + heightOfNum);
-                    if (mTimeSignatureNineBitmap == null)
-                    {
-                        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.time_signature_9);
-                        canvas.drawBitmap(bitmap, null, coordinates, null);
-                        logNoPreInitializedFigure("mTimeSignatureNineBitmap");
-                        break;
-                    }
-                    //else
                     canvas.drawBitmap(mTimeSignatureNineBitmap, null, coordinates, null);
                     startXUpperNum += widthOfNine;
                     break;
@@ -1122,131 +977,51 @@ public class MusicNotationView extends View
             {
                 case 0:
                     coordinates = new RectF(startXLowerNum, lineThreeY, startXLowerNum + widthOfZero, lineThreeY + heightOfNum);
-                    if (mTimeSignatureZeroBitmap == null)
-                    {
-                        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.time_signature_0);
-                        canvas.drawBitmap(bitmap, null, coordinates, null);
-                        logNoPreInitializedFigure("mTimeSignatureZeroBitmap");
-                        break;
-                    }
-                    //else
                     canvas.drawBitmap(mTimeSignatureZeroBitmap, null, coordinates, null);
                     startXLowerNum += widthOfZero;
                     break;
                 case 1:
                     coordinates = new RectF(startXLowerNum, lineThreeY, startXLowerNum + widthOfOne, lineThreeY + heightOfNum);
-                    if (mTimeSignatureOneBitmap == null)
-                    {
-                        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.time_signature_1);
-                        canvas.drawBitmap(bitmap, null, coordinates, null);
-                        logNoPreInitializedFigure("mTimeSignatureOneBitmap");
-                        break;
-                    }
-                    //else
                     canvas.drawBitmap(mTimeSignatureOneBitmap, null, coordinates, null);
                     startXLowerNum += widthOfOne;
                     break;
                 case 2:
                     coordinates = new RectF(startXLowerNum, lineThreeY, startXLowerNum + widthOfTwo, lineThreeY + heightOfNum);
-                    if (mTimeSignatureTwoBitmap == null)
-                    {
-                        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.time_signature_2);
-                        canvas.drawBitmap(bitmap, null, coordinates, null);
-                        logNoPreInitializedFigure("mTimeSignatureTwoBitmap");
-                        break;
-                    }
-                    //else
                     canvas.drawBitmap(mTimeSignatureTwoBitmap, null, coordinates, null);
                     startXLowerNum += widthOfTwo;
                     break;
                 case 3:
                     coordinates = new RectF(startXLowerNum, lineThreeY, startXLowerNum + widthOfThree, lineThreeY + heightOfNum);
-                    if (mTimeSignatureThreeBitmap == null)
-                    {
-                        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.time_signature_3);
-                        canvas.drawBitmap(bitmap, null, coordinates, null);
-                        logNoPreInitializedFigure("mTimeSignatureThreeBitmap");
-                        break;
-                    }
-                    //else
                     canvas.drawBitmap(mTimeSignatureThreeBitmap, null, coordinates, null);
                     startXLowerNum += widthOfThree;
                     break;
                 case 4:
                     coordinates = new RectF(startXLowerNum, lineThreeY, startXLowerNum + widthOfFour, lineThreeY + heightOfNum);
-                    if (mTimeSignatureFourBitmap == null)
-                    {
-                        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.time_signature_4);
-                        canvas.drawBitmap(bitmap, null, coordinates, null);
-                        logNoPreInitializedFigure("mTimeSignatureFourBitmap");
-                        break;
-                    }
-                    //else
                     canvas.drawBitmap(mTimeSignatureFourBitmap, null, coordinates, null);
                     startXLowerNum += widthOfFour;
                     break;
                 case 5:
                     coordinates = new RectF(startXLowerNum, lineThreeY, startXLowerNum + widthOfFive, lineThreeY + heightOfNum);
-                    if (mTimeSignatureFiveBitmap == null)
-                    {
-                        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.time_signature_5);
-                        canvas.drawBitmap(bitmap, null, coordinates, null);
-                        logNoPreInitializedFigure("mTimeSignatureFiveBitmap");
-                        break;
-                    }
-                    //else
                     canvas.drawBitmap(mTimeSignatureFiveBitmap, null, coordinates, null);
                     startXLowerNum += widthOfFive;
                     break;
                 case 6:
                     coordinates = new RectF(startXLowerNum, lineThreeY, startXLowerNum + widthOfSix, lineThreeY + heightOfNum);
-                    if (mTimeSignatureSixBitmap == null)
-                    {
-                        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.time_signature_6);
-                        canvas.drawBitmap(bitmap, null, coordinates, null);
-                        logNoPreInitializedFigure("mTimeSignatureSixBitmap");
-                        break;
-                    }
-                    //else
                     canvas.drawBitmap(mTimeSignatureSixBitmap, null, coordinates, null);
                     startXLowerNum += widthOfSix;
                     break;
                 case 7:
                     coordinates = new RectF(startXLowerNum, lineThreeY, startXLowerNum + widthOfSeven, lineThreeY + heightOfNum);
-                    if (mTimeSignatureSevenBitmap == null)
-                    {
-                        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.time_signature_7);
-                        canvas.drawBitmap(bitmap, null, coordinates, null);
-                        logNoPreInitializedFigure("mTimeSignatureSevenBitmap");
-                        break;
-                    }
-                    //else
                     canvas.drawBitmap(mTimeSignatureSevenBitmap, null, coordinates, null);
                     startXLowerNum += widthOfSeven;
                     break;
                 case 8:
                     coordinates = new RectF(startXLowerNum, lineThreeY, startXLowerNum + widthOfEight, lineThreeY + heightOfNum);
-                    if (mTimeSignatureEightBitmap == null)
-                    {
-                        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.time_signature_8);
-                        canvas.drawBitmap(bitmap, null, coordinates, null);
-                        logNoPreInitializedFigure("mTimeSignatureEightBitmap");
-                        break;
-                    }
-                    //else
                     canvas.drawBitmap(mTimeSignatureEightBitmap, null, coordinates, null);
                     startXLowerNum += widthOfEight;
                     break;
                 case 9:
                     coordinates = new RectF(startXLowerNum, lineThreeY, startXLowerNum + widthOfNine, lineThreeY + heightOfNum);
-                    if (mTimeSignatureNineBitmap == null)
-                    {
-                        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.time_signature_9);
-                        canvas.drawBitmap(bitmap, null, coordinates, null);
-                        logNoPreInitializedFigure("mTimeSignatureNineBitmap");
-                        break;
-                    }
-                    //else
                     canvas.drawBitmap(mTimeSignatureNineBitmap, null, coordinates, null);
                     startXLowerNum += widthOfNine;
                     break;
@@ -1258,6 +1033,18 @@ public class MusicNotationView extends View
         return totalWidth;
     }
 
+	/**
+	 * Draw the musical notes on the staff.
+	 * @param canvas The canvas to draw on
+	 * @param startX The X position to start drawing the notes on
+	 * @param smallEmptySpaceCoefficient The width of a small empty space in terms of getWidth()
+	 * @param lineOneY The Y position of the lowest line of the staff (E4 or low E on treble clef, G2 or low G on bass clef)
+	 * @param lineTwoY The Y position of the line immediately above the lowest line of the staff (G4 or middle G on treble clef, B2 or low B on bass clef)
+	 * @param lineThreeY The Y position of the middle line of the staff (B4 or middle B on treble clef, D3 or middle D on bass clef)
+	 * @param lineFourY The Y position of the line immediately below the uppermost line of the staff (D5 or middle D on treble cleff, F3 or middle F on bass clef)
+	 * @param lineFiveY The Y position of the uppermost line of the staff (F5 or high F on treble clef, A3 or high A on bass clef)
+	 * @param gapBetweenLines The difference in Y between two lines on the staff
+	 */
     private void drawMusicalNotes(Canvas canvas, float startX, float smallEmptySpaceCoefficient, float lineOneY, float lineTwoY, float lineThreeY, float lineFourY, float lineFiveY,
 								  float gapBetweenLines)
     {

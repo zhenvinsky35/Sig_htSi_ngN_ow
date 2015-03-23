@@ -5,11 +5,11 @@ import jm.JMC;
 import static org.altervista.zhen.sightsingnow.EnhancedNote.*;
 import static org.altervista.zhen.sightsingnow.EnhancedNote.BaseNoteAndOutOfKeySignatureAccidental.*;
 
+/**
+ * A set of enums that hold the practice music. Contains the musical phrase, key signature, and time signature.
+ */
 public enum PracticeMusic
 {
-	/*whenever updating PracticeMusic, make sure that their NumIds are unique and update
-		getPracticeMusicFromNumericalIdentifier() and getRandomPracticeMusic()
-	*/
 	M_1(new EnhancedNote[][]
 			{
 					{//bar 1
@@ -1481,26 +1481,42 @@ public enum PracticeMusic
 		return musicalPhrase;
 	}
 
+	/**
+	 * @return The key signature associated with the music.
+	 */
 	public MusicNotationView.KeySignature getKeySignature()
 	{
 		return keySignature;
 	}
 
+	/**
+	 * @return The upper number of the time signature associated with the music.
+	 */
 	public byte getTimeSignatureUpperNum()
 	{
 		return timeSignatureUpperNum;
 	}
 
+	/**
+	 * @return The lower number of the time signature associated with the music.
+	 */
 	public byte getTimeSignatureLowerNum()
 	{
 		return timeSignatureLowerNum;
 	}
 
+	/**
+	 * @return The unique numerical identifier associated with each PracticeMusic.
+	 */
 	public int getNumericalIdentifier()
 	{
 		return numericalIdentifier;
 	}
 
+	/**
+	 * @param numId The numerical identifier.
+	 * @return The PracticeMusic associated with the inputted numerical identifier, or null for 0 or an invalid numerical identifier.
+	 */
 	public static PracticeMusic getPracticeMusicFromNumericalIdentifier(int numId)
 	{
 		switch (numId)
@@ -1589,7 +1605,6 @@ public enum PracticeMusic
 	public static PracticeMusic getRandomPracticeMusic(int valueToExclude)
 	{
 		int randomInt;
-		//todo optimize this once all of the PracticeMusic are written in code
 		do //this loop will run at least once, but will keep repeating until the random number doesn't equal valueToExclude
 		{
 			randomInt = ((int) (Math.random() * 28)) + 1;
