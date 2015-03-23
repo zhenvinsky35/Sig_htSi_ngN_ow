@@ -21,7 +21,7 @@ import static org.altervista.zhen.sightsingnow.EnhancedNote.*;
 import static org.altervista.zhen.sightsingnow.EnhancedNote.BaseNoteAndOutOfKeySignatureAccidental.*;
 
 /**
- * This custom view takes musical data as input and draws a musical staff with the input data.
+ * This custom view takes musical data as input and draws a musical staff with the inputted music on it.
  */
 public class MusicNotationView extends View
 {
@@ -199,8 +199,8 @@ public class MusicNotationView extends View
 
         float startX = 0;
 
+		//draws the clef
         float clefWidth = canvas.getWidth() * 0.06f;
-        //draws the clef
         if (mClef != null)
         {
             switch (mClef)
@@ -223,8 +223,9 @@ public class MusicNotationView extends View
         //adds a small empty space between the clef and key signature
         startX += canvas.getWidth() * smallEmptySpaceCoefficient;
 
-        //gapBetweenLines * 2.5 is the height of the sharp sign, 60/190 is the width/height ratio of the sharp sign
+        //calculation for width of sharp: gapBetweenLines * 2.5 is the height of the sharp sign, 60/190 is the width/height ratio of the sharp sign
         float widthOfSharp = gapBetweenLines * 2.5f * (60f/190f);
+		//calculation for width of flat is analogous to width of sharp
         float widthOfFlat = gapBetweenLines * 2f * (60f/130f);
         //Accidentals of the key signatures overlap slightly in the x-axis to conserve space, the coefficient determines the degree of overlap
         float keySignatureAccidentalOverlapCoefficient = (5f/6f);
@@ -638,10 +639,12 @@ public class MusicNotationView extends View
         //adds a small gap between the key signature and the time signature
         startX += getWidth() * smallEmptySpaceCoefficient;
 
+		//draw time signature
         startX += drawTimeSignature(canvas, mTimeSignatureUpperNum, mTimeSignatureLowerNum, startX, lineFiveY, lineThreeY, gapBetweenLines);
 
         //no small empty space added here as one will be added in drawMusicalNotes(...)
 
+		//draw musical notes
         drawMusicalNotes(canvas, startX, smallEmptySpaceCoefficient, lineOneY, lineTwoY, lineThreeY, lineFourY, lineFiveY,
 				gapBetweenLines);
     }

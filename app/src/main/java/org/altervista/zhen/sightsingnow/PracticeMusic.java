@@ -910,12 +910,15 @@ public enum PracticeMusic
 							new EnhancedNote(JMC.F4,
 									new EnhancedDuration[] {EnhancedDuration.QUARTER_NOTE},
 									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.F1, Accidental.NONE)),
+							//note 2
 							new EnhancedNote(JMC.C5,
 									new EnhancedDuration[] {EnhancedDuration.EIGHTH_NOTE},
 									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.C2, Accidental.NONE)),
+							//note 3
 							new EnhancedNote(JMC.B4,
 									new EnhancedDuration[] {EnhancedDuration.EIGHTH_NOTE},
 									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.B2, Accidental.NONE)),
+							//note 4
 							new EnhancedNote(JMC.A4,
 									new EnhancedDuration[] {EnhancedDuration.QUARTER_NOTE},
 									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.A2, Accidental.NONE))
@@ -950,12 +953,15 @@ public enum PracticeMusic
 							new EnhancedNote(JMC.C4,
 									new EnhancedDuration[] {EnhancedDuration.QUARTER_NOTE},
 									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.C1, Accidental.NONE)),
+							//note 2
 							new EnhancedNote(JMC.G4,
 									new EnhancedDuration[] {EnhancedDuration.EIGHTH_NOTE},
 									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.G1, Accidental.NONE)),
+							//note 3
 							new EnhancedNote(JMC.FS4,
 									new EnhancedDuration[] {EnhancedDuration.EIGHTH_NOTE},
 									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.F1, Accidental.NONE)),
+							//note 4
 							new EnhancedNote(JMC.E4,
 									new EnhancedDuration[] {EnhancedDuration.QUARTER_NOTE},
 									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.E1, Accidental.NONE))
@@ -990,12 +996,15 @@ public enum PracticeMusic
 							new EnhancedNote(JMC.G4,
 									new EnhancedDuration[] {EnhancedDuration.QUARTER_NOTE},
 									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.G1, Accidental.NONE)),
+							//note 2
 							new EnhancedNote(JMC.D5,
 									new EnhancedDuration[] {EnhancedDuration.EIGHTH_NOTE},
 									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.D2, Accidental.NONE)),
+							//note 3
 							new EnhancedNote(JMC.CS5,
 									new EnhancedDuration[] {EnhancedDuration.EIGHTH_NOTE},
 									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.C2, Accidental.NONE)),
+							//note 4
 							new EnhancedNote(JMC.B4,
 									new EnhancedDuration[] {EnhancedDuration.QUARTER_NOTE},
 									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.B2, Accidental.NONE))
@@ -1030,12 +1039,15 @@ public enum PracticeMusic
 							new EnhancedNote(JMC.D4,
 									new EnhancedDuration[] {EnhancedDuration.QUARTER_NOTE},
 									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.D1, Accidental.NONE)),
+							//note 2
 							new EnhancedNote(JMC.A4,
 									new EnhancedDuration[] {EnhancedDuration.EIGHTH_NOTE},
 									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.A2, Accidental.NONE)),
+							//note 3
 							new EnhancedNote(JMC.GS4,
 									new EnhancedDuration[] {EnhancedDuration.EIGHTH_NOTE},
 									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.G1, Accidental.NONE)),
+							//note 4
 							new EnhancedNote(JMC.FS4,
 									new EnhancedDuration[] {EnhancedDuration.QUARTER_NOTE},
 									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.F1, Accidental.NONE))
@@ -1070,12 +1082,15 @@ public enum PracticeMusic
 							new EnhancedNote(JMC.BF3,
 									new EnhancedDuration[] {EnhancedDuration.QUARTER_NOTE},
 									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.B1, Accidental.NONE)),
+							//note 2
 							new EnhancedNote(JMC.F4,
 									new EnhancedDuration[] {EnhancedDuration.EIGHTH_NOTE},
 									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.F1, Accidental.NONE)),
+							//note 3
 							new EnhancedNote(JMC.E4,
 									new EnhancedDuration[] {EnhancedDuration.EIGHTH_NOTE},
 									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.E1, Accidental.NONE)),
+							//note 4
 							new EnhancedNote(JMC.D4,
 									new EnhancedDuration[] {EnhancedDuration.QUARTER_NOTE},
 									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.D1, Accidental.NONE))
@@ -1110,12 +1125,15 @@ public enum PracticeMusic
 							new EnhancedNote(JMC.EF4,
 									new EnhancedDuration[] {EnhancedDuration.QUARTER_NOTE},
 									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.E1, Accidental.NONE)),
+							//note 2
 							new EnhancedNote(JMC.BF4,
 									new EnhancedDuration[] {EnhancedDuration.EIGHTH_NOTE},
 									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.B2, Accidental.NONE)),
+							//note 3
 							new EnhancedNote(JMC.A4,
 									new EnhancedDuration[] {EnhancedDuration.EIGHTH_NOTE},
 									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.A2, Accidental.NONE)),
+							//note 4
 							new EnhancedNote(JMC.G4,
 									new EnhancedDuration[] {EnhancedDuration.QUARTER_NOTE},
 									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.G1, Accidental.NONE))
@@ -1150,12 +1168,15 @@ public enum PracticeMusic
 							new EnhancedNote(JMC.DF4,
 									new EnhancedDuration[] {EnhancedDuration.QUARTER_NOTE},
 									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.D1, Accidental.NONE)),
+							//note 2
 							new EnhancedNote(JMC.AF4,
 									new EnhancedDuration[] {EnhancedDuration.EIGHTH_NOTE},
 									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.A2, Accidental.NONE)),
+							//note 3
 							new EnhancedNote(JMC.G4,
 									new EnhancedDuration[] {EnhancedDuration.EIGHTH_NOTE},
 									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.G1, Accidental.NONE)),
+							//note 4
 							new EnhancedNote(JMC.F4,
 									new EnhancedDuration[] {EnhancedDuration.QUARTER_NOTE},
 									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.F1, Accidental.NONE))
@@ -1164,6 +1185,279 @@ public enum PracticeMusic
 			MusicNotationView.KeySignature.F_MINOR,
 			(byte)3, (byte)4,
 			28
+	),
+	M_29(new EnhancedNote[][]
+			{
+					{//bar 1
+							//note 1
+							new EnhancedNote(JMC.A4,
+									new EnhancedDuration[] {EnhancedDuration.DOTTED_QUARTER_NOTE},
+									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.A2, Accidental.NONE)),
+							//note 2
+							new EnhancedNote(JMC.E4,
+									new EnhancedDuration[] {EnhancedDuration.QUARTER_NOTE},
+									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.E1, Accidental.NONE)),
+							//note 3
+							new EnhancedNote(JMC.A4,
+									new EnhancedDuration[] {EnhancedDuration.EIGHTH_NOTE},
+									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.A2, Accidental.NONE)),
+					},
+					{//bar 2
+							//note 1
+							new EnhancedNote(JMC.C5,
+									new EnhancedDuration[] {EnhancedDuration.DOTTED_EIGHTH_NOTE},
+									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.C2, Accidental.NONE)),
+							//note 2
+							new EnhancedNote(JMC.B4,
+									new EnhancedDuration[] {EnhancedDuration.SIXTEENTH_NOTE},
+									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.B2, Accidental.NONE)),
+							//note 3
+							new EnhancedNote(JMC.GS4,
+									new EnhancedDuration[] {EnhancedDuration.EIGHTH_NOTE},
+									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.G1, Accidental.SHARP)),
+							//note 4
+							new EnhancedNote(JMC.A4,
+									new EnhancedDuration[] {EnhancedDuration.DOTTED_QUARTER_NOTE},
+									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.A2, Accidental.NONE)),
+					}
+			},
+			MusicNotationView.KeySignature.A_MINOR,
+			(byte)6, (byte)8,
+			29
+	),
+	M_30(new EnhancedNote[][]
+			{
+					{//bar 1
+							//note 1
+							new EnhancedNote(JMC.B4,
+									new EnhancedDuration[] {EnhancedDuration.DOTTED_QUARTER_NOTE},
+									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.B2, Accidental.NONE)),
+							//note 2
+							new EnhancedNote(JMC.FS4,
+									new EnhancedDuration[] {EnhancedDuration.QUARTER_NOTE},
+									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.F1, Accidental.NONE)),
+							//note 3
+							new EnhancedNote(JMC.B4,
+									new EnhancedDuration[] {EnhancedDuration.EIGHTH_NOTE},
+									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.B2, Accidental.NONE)),
+					},
+					{//bar 2
+							//note 1
+							new EnhancedNote(JMC.D5,
+									new EnhancedDuration[] {EnhancedDuration.DOTTED_EIGHTH_NOTE},
+									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.D2, Accidental.NONE)),
+							//note 2
+							new EnhancedNote(JMC.CS5,
+									new EnhancedDuration[] {EnhancedDuration.SIXTEENTH_NOTE},
+									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.C2, Accidental.NONE)),
+							//note 3
+							new EnhancedNote(JMC.AS4,
+									new EnhancedDuration[] {EnhancedDuration.EIGHTH_NOTE},
+									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.A2, Accidental.SHARP)),
+							//note 4
+							new EnhancedNote(JMC.B4,
+									new EnhancedDuration[] {EnhancedDuration.DOTTED_QUARTER_NOTE},
+									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.B2, Accidental.NONE)),
+					}
+			},
+			MusicNotationView.KeySignature.B_MINOR,
+			(byte)6, (byte)8,
+			30
+	),
+	M_31(new EnhancedNote[][]
+			{
+					{//bar 1
+							//note 1
+							new EnhancedNote(JMC.FS4,
+									new EnhancedDuration[] {EnhancedDuration.DOTTED_QUARTER_NOTE},
+									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.F1, Accidental.NONE)),
+							//note 2
+							new EnhancedNote(JMC.CS4,
+									new EnhancedDuration[] {EnhancedDuration.QUARTER_NOTE},
+									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.C1, Accidental.NONE)),
+							//note 3
+							new EnhancedNote(JMC.FS4,
+									new EnhancedDuration[] {EnhancedDuration.EIGHTH_NOTE},
+									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.F1, Accidental.NONE)),
+					},
+					{//bar 2
+							//note 1
+							new EnhancedNote(JMC.A4,
+									new EnhancedDuration[] {EnhancedDuration.DOTTED_EIGHTH_NOTE},
+									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.A2, Accidental.NONE)),
+							//note 2
+							new EnhancedNote(JMC.GS4,
+									new EnhancedDuration[] {EnhancedDuration.SIXTEENTH_NOTE},
+									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.G1, Accidental.NONE)),
+							//note 3
+							new EnhancedNote(JMC.ES4,
+									new EnhancedDuration[] {EnhancedDuration.EIGHTH_NOTE},
+									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.E1, Accidental.SHARP)),
+							//note 4
+							new EnhancedNote(JMC.FS4,
+									new EnhancedDuration[] {EnhancedDuration.DOTTED_QUARTER_NOTE},
+									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.F1, Accidental.NONE)),
+					}
+			},
+			MusicNotationView.KeySignature.F_SHARP_MINOR,
+			(byte)6, (byte)8,
+			31
+	),
+	M_32(new EnhancedNote[][]
+			{
+					{//bar 1
+							//note 1
+							new EnhancedNote(JMC.CS5,
+									new EnhancedDuration[] {EnhancedDuration.DOTTED_QUARTER_NOTE},
+									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.C2, Accidental.NONE)),
+							//note 2
+							new EnhancedNote(JMC.GS4,
+									new EnhancedDuration[] {EnhancedDuration.QUARTER_NOTE},
+									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.G1, Accidental.NONE)),
+							//note 3
+							new EnhancedNote(JMC.CS5,
+									new EnhancedDuration[] {EnhancedDuration.EIGHTH_NOTE},
+									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.C2, Accidental.NONE)),
+					},
+					{//bar 2
+							//note 1
+							new EnhancedNote(JMC.E5,
+									new EnhancedDuration[] {EnhancedDuration.DOTTED_EIGHTH_NOTE},
+									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.E2, Accidental.NONE)),
+							//note 2
+							new EnhancedNote(JMC.DS5,
+									new EnhancedDuration[] {EnhancedDuration.SIXTEENTH_NOTE},
+									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.D2, Accidental.NONE)),
+							//note 3
+							new EnhancedNote(JMC.BS4,
+									new EnhancedDuration[] {EnhancedDuration.EIGHTH_NOTE},
+									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.B2, Accidental.SHARP)),
+							//note 4
+							new EnhancedNote(JMC.CS5,
+									new EnhancedDuration[] {EnhancedDuration.DOTTED_QUARTER_NOTE},
+									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.C2, Accidental.NONE)),
+					}
+			},
+			MusicNotationView.KeySignature.C_SHARP_MINOR,
+			(byte)6, (byte)8,
+			32
+	),
+	M_33(new EnhancedNote[][]
+			{
+					{//bar 1
+							//note 1
+							new EnhancedNote(JMC.G4,
+									new EnhancedDuration[] {EnhancedDuration.DOTTED_QUARTER_NOTE},
+									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.G1, Accidental.NONE)),
+							//note 2
+							new EnhancedNote(JMC.D4,
+									new EnhancedDuration[] {EnhancedDuration.QUARTER_NOTE},
+									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.D1, Accidental.NONE)),
+							//note 3
+							new EnhancedNote(JMC.G4,
+									new EnhancedDuration[] {EnhancedDuration.EIGHTH_NOTE},
+									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.G1, Accidental.NONE)),
+					},
+					{//bar 2
+							//note 1
+							new EnhancedNote(JMC.BF4,
+									new EnhancedDuration[] {EnhancedDuration.DOTTED_EIGHTH_NOTE},
+									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.B2, Accidental.NONE)),
+							//note 2
+							new EnhancedNote(JMC.A4,
+									new EnhancedDuration[] {EnhancedDuration.SIXTEENTH_NOTE},
+									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.A2, Accidental.NONE)),
+							//note 3
+							new EnhancedNote(JMC.FS4,
+									new EnhancedDuration[] {EnhancedDuration.EIGHTH_NOTE},
+									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.F1, Accidental.SHARP)),
+							//note 4
+							new EnhancedNote(JMC.G4,
+									new EnhancedDuration[] {EnhancedDuration.DOTTED_QUARTER_NOTE},
+									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.G1, Accidental.NONE)),
+					}
+			},
+			MusicNotationView.KeySignature.G_MINOR,
+			(byte)6, (byte)8,
+			33
+	),
+	M_34(new EnhancedNote[][]
+			{
+					{//bar 1
+							//note 1
+							new EnhancedNote(JMC.C5,
+									new EnhancedDuration[] {EnhancedDuration.DOTTED_QUARTER_NOTE},
+									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.C2, Accidental.NONE)),
+							//note 2
+							new EnhancedNote(JMC.G4,
+									new EnhancedDuration[] {EnhancedDuration.QUARTER_NOTE},
+									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.G1, Accidental.NONE)),
+							//note 3
+							new EnhancedNote(JMC.C5,
+									new EnhancedDuration[] {EnhancedDuration.EIGHTH_NOTE},
+									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.C2, Accidental.NONE)),
+					},
+					{//bar 2
+							//note 1
+							new EnhancedNote(JMC.EF5,
+									new EnhancedDuration[] {EnhancedDuration.DOTTED_EIGHTH_NOTE},
+									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.E2, Accidental.NONE)),
+							//note 2
+							new EnhancedNote(JMC.D5,
+									new EnhancedDuration[] {EnhancedDuration.SIXTEENTH_NOTE},
+									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.D2, Accidental.NONE)),
+							//note 3
+							new EnhancedNote(JMC.B4,
+									new EnhancedDuration[] {EnhancedDuration.EIGHTH_NOTE},
+									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.B2, Accidental.NATURAL)),
+							//note 4
+							new EnhancedNote(JMC.C5,
+									new EnhancedDuration[] {EnhancedDuration.DOTTED_QUARTER_NOTE},
+									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.C2, Accidental.NONE)),
+					}
+			},
+			MusicNotationView.KeySignature.C_MINOR,
+			(byte)6, (byte)8,
+			34
+	),
+	M_35(new EnhancedNote[][]
+			{
+					{//bar 1
+							//note 1
+							new EnhancedNote(JMC.F4,
+									new EnhancedDuration[] {EnhancedDuration.DOTTED_QUARTER_NOTE},
+									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.F1, Accidental.NONE)),
+							//note 2
+							new EnhancedNote(JMC.C4,
+									new EnhancedDuration[] {EnhancedDuration.QUARTER_NOTE},
+									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.C1, Accidental.NONE)),
+							//note 3
+							new EnhancedNote(JMC.F4,
+									new EnhancedDuration[] {EnhancedDuration.EIGHTH_NOTE},
+									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.F1, Accidental.NONE)),
+					},
+					{//bar 2
+							//note 1
+							new EnhancedNote(JMC.AF4,
+									new EnhancedDuration[] {EnhancedDuration.DOTTED_EIGHTH_NOTE},
+									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.A2, Accidental.NONE)),
+							//note 2
+							new EnhancedNote(JMC.G4,
+									new EnhancedDuration[] {EnhancedDuration.SIXTEENTH_NOTE},
+									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.G1, Accidental.NONE)),
+							//note 3
+							new EnhancedNote(JMC.E4,
+									new EnhancedDuration[] {EnhancedDuration.EIGHTH_NOTE},
+									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.E1, Accidental.NATURAL)),
+							//note 4
+							new EnhancedNote(JMC.F4,
+									new EnhancedDuration[] {EnhancedDuration.DOTTED_QUARTER_NOTE},
+									new BaseNoteAndOutOfKeySignatureAccidental(BaseNote.F1, Accidental.NONE)),
+					}
+			},
+			MusicNotationView.KeySignature.F_MINOR,
+			(byte)6, (byte)8,
+			35
 	);
 
 	private final EnhancedNote[][] musicalPhrase;
@@ -1267,6 +1561,20 @@ public enum PracticeMusic
 				return M_27;
 			case 28:
 				return M_28;
+			case 29:
+				return M_29;
+			case 30:
+				return M_30;
+			case 31:
+				return M_31;
+			case 32:
+				return M_32;
+			case 33:
+				return M_33;
+			case 34:
+				return M_34;
+			case 35:
+				return M_35;
 			case 0:
 			default:
 				return null;

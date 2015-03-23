@@ -6,9 +6,9 @@
 	<string name="choose_a_clef_message">Choose a clef</string>
 	<string name="treble_clef">Treble clef</string>
 	<string name="bass_clef">Bass clef</string>
-	<string name="title_activity_practice">PracticeActivity</string>
-	<string name="get_starting_pitch">Get Starting Pitch</string>
-	<string name="get_rhythm">Get Rhythm</string>
+	<string name="title_activity_practice"></string>
+	<string name="play_starting_pitch">Play Starting Pitch</string>
+	<string name="play_rhythm">Play Rhythm</string>
 	<string name="start_recording">Record Your Singing</string>
 	<string name="stop_recording">Stop Recording</string>
 	<string name="playback_recording">Play Back Your Singing</string>

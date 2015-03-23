@@ -194,7 +194,9 @@ public class PracticeActivity extends ActionBarActivity
 							@Override
 							public void onCompletion(MediaPlayer mp)
 							{
+								mp.reset();
 								mp.release();
+								mStartingPitchMediaPlayer = null;
 							}
 						});
 					}
@@ -290,7 +292,9 @@ public class PracticeActivity extends ActionBarActivity
 						@Override
 						public void onCompletion(MediaPlayer mp)
 						{
+							mp.reset();
 							mp.release();
+							mRhythmMediaPlayer = null;
 						}
 					});
 				}
@@ -374,7 +378,9 @@ public class PracticeActivity extends ActionBarActivity
 						@Override
 						public void onCompletion(MediaPlayer mp)
 						{
+							mp.reset();
 							mp.release();
+							mRecordingMediaPlayer = null;
 						}
 					});
 				}
@@ -433,7 +439,9 @@ public class PracticeActivity extends ActionBarActivity
 						@Override
 						public void onCompletion(MediaPlayer mp)
 						{
+							mp.reset();
 							mp.release();
+							mReferenceMediaPlayer = null;
 						}
 					});
 				}
@@ -464,6 +472,7 @@ public class PracticeActivity extends ActionBarActivity
 		private void drawNewMusic(int practiceMusicNumIdToExclude)
 		{
 			PracticeMusic practiceMusic = ((PracticeActivity) getActivity()).getPracticeMusic();
+
 			if (practiceMusic == null)
 			{
 				practiceMusic = PracticeMusic.getRandomPracticeMusic(practiceMusicNumIdToExclude);
@@ -529,19 +538,43 @@ public class PracticeActivity extends ActionBarActivity
 		{
 			if (mStartingPitchMediaPlayer != null)
 			{
+				if (mStartingPitchMediaPlayer.isPlaying())
+				{
+					mStartingPitchMediaPlayer.stop();
+				}
+				mStartingPitchMediaPlayer.reset();
 				mStartingPitchMediaPlayer.release();
+				mStartingPitchMediaPlayer = null;
 			}
 			if (mRhythmMediaPlayer != null)
 			{
+				if (mRhythmMediaPlayer.isPlaying())
+				{
+					mRhythmMediaPlayer.stop();
+				}
+				mRhythmMediaPlayer.reset();
 				mRhythmMediaPlayer.release();
+				mRhythmMediaPlayer = null;
 			}
 			if (mRecordingMediaPlayer != null)
 			{
+				if (mRecordingMediaPlayer.isPlaying())
+				{
+					mRecordingMediaPlayer.stop();
+				}
+				mRecordingMediaPlayer.reset();
 				mRecordingMediaPlayer.release();
+				mRecordingMediaPlayer = null;
 			}
 			if (mReferenceMediaPlayer != null)
 			{
+				if (mReferenceMediaPlayer.isPlaying())
+				{
+					mReferenceMediaPlayer.stop();
+				}
+				mReferenceMediaPlayer.reset();
 				mReferenceMediaPlayer.release();
+				mReferenceMediaPlayer = null;
 			}
 			if (mMediaRecorder != null)
 			{

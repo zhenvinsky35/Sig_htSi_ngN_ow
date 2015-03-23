@@ -28,7 +28,7 @@
 		<Button
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:text="@string/get_starting_pitch"
+			android:text="@string/play_starting_pitch"
 			android:id="@+id/getStartingPitchButton"
 			android:layout_alignParentStart="true"
 			android:minWidth="250dp"
@@ -39,7 +39,7 @@
 		<Button
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:text="@string/get_rhythm"
+			android:text="@string/play_rhythm"
 			android:id="@+id/getRhythmButton"
 			android:layout_alignParentTop="true"
 			android:layout_toRightOf="@+id/getStartingPitchButton"
