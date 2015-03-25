@@ -1607,7 +1607,7 @@ public enum PracticeMusic
 		int randomInt;
 		do //this loop will run at least once, but will keep repeating until the random number doesn't equal valueToExclude
 		{
-			randomInt = ((int) (Math.random() * 28)) + 1;
+			randomInt = ((int) (Math.random() * 35)) + 1;
 		} while  (randomInt == valueToExclude);
 
 		return getPracticeMusicFromNumericalIdentifier(randomInt);
