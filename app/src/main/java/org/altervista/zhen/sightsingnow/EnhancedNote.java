@@ -13,8 +13,8 @@ public class EnhancedNote extends Note
 	private BaseNoteAndOutOfKeySignatureAccidental mBaseNoteAndOutOfKeySignatureAccidental;
 
 	/**
-	 * @param pitch The pitch of the note in JMC integer constants, assume treble clef.
-	 * @param enhancedDurations The duration of the note. Put multiple durations into the array if they are to be tied. Otherwise, put only one note into the array. Note that drawing ties is currently unsupported.
+	 * @param pitch                                  The pitch of the note in JMC integer constants, assume treble clef.
+	 * @param enhancedDurations                      The duration of the note. Put multiple durations into the array if they are to be tied. Otherwise, put only one note into the array. Note that drawing ties is currently unsupported.
 	 * @param baseNoteAndOutOfKeySignatureAccidental The base note (note without any accidental applied) and any non-key signature accidental to be applied.
 	 */
 	public EnhancedNote(int pitch, EnhancedDuration[] enhancedDurations,
@@ -23,6 +23,28 @@ public class EnhancedNote extends Note
 		super(pitch, getDurationFromEnhancedDurations(enhancedDurations));
 		mEnhancedDurations = enhancedDurations;
 		mBaseNoteAndOutOfKeySignatureAccidental = baseNoteAndOutOfKeySignatureAccidental;
+	}
+
+	/**
+	 * An alternate constructor for notes without ties
+	 * @param pitch The pitch of the note in JMC integer constants, assume treble clef.
+	 * @param enhancedDuration The duration of the note.
+	 * @param baseNote The base note without any accidental applied
+	 * @param accidental The non-key signature accidental to be applied
+	 */
+	public EnhancedNote(int pitch, EnhancedDuration enhancedDuration,
+						BaseNoteAndOutOfKeySignatureAccidental.BaseNote baseNote,
+						BaseNoteAndOutOfKeySignatureAccidental.Accidental accidental)
+	{
+		super(pitch, enhancedDuration.getDuration());
+		mEnhancedDurations = new EnhancedDuration[] {enhancedDuration};
+		mBaseNoteAndOutOfKeySignatureAccidental = new BaseNoteAndOutOfKeySignatureAccidental(baseNote, accidental);
+	}
+
+	public EnhancedNote(int pitch, EnhancedDuration enhancedDuration,
+						BaseNoteAndOutOfKeySignatureAccidental.BaseNote baseNote)
+	{
+		this(pitch, enhancedDuration, baseNote, BaseNoteAndOutOfKeySignatureAccidental.Accidental.NONE);
 	}
 
 	/**

@@ -13,12 +13,12 @@
 	<ImageView
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_gravity="center_horizontal"
 		android:src="@mipmap/ic_launcher"
 		android:contentDescription="@string/welcome_screen_eighth_note_image_content_description"
-		android:minHeight="110dp"
-		android:minWidth="110dp"
-		android:nestedScrollingEnabled="true"/>
+		android:minHeight="70dp"
+		android:minWidth="70dp"
+		android:nestedScrollingEnabled="true"
+		android:layout_gravity="center_horizontal"/>
 
 	<TextView
 		android:layout_width="wrap_content"
@@ -28,7 +28,7 @@
 		android:id="@+id/textView"
 		android:layout_gravity="center_horizontal"
 		android:singleLine="true"
-		android:textSize="60sp"/>
+		android:textSize="35sp"/>
 
 	<LinearLayout
 		android:orientation="horizontal"

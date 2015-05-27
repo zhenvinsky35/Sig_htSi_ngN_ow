@@ -114,7 +114,7 @@ public class PracticeActivity extends ActionBarActivity
 		private MediaRecorder mMediaRecorder;
 		private MusicNotationView mMusicStaffTop, mMusicStaffBottom;
 		private File mStartingPitchAudioFile, mRhythmAudioFile, mRecordingAudioFile, mReferenceAudioFile;
-		private final int TEMPO = 100;
+		private final int TEMPO = 80;
 
 		public PracticeFragment()
 		{
@@ -515,7 +515,7 @@ public class PracticeActivity extends ActionBarActivity
 				mMusicStaffTop.setMusicalPhrase(musicalPhraseTop);
 
 				mMusicStaffBottom.setKeySignature(keySignature);
-				//do not set time signature for bottom staff
+				mMusicStaffBottom.setTimeSignature(timeSignatureUpperNum, timeSignatureLowerNum);
 				mMusicStaffBottom.setMusicalPhrase(musicalPhraseBottom);
 			}
 			else //landscape orientation
