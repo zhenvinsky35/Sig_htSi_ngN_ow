@@ -91,8 +91,8 @@
 		<Button
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:text="@string/next_exercise"
-			android:id="@+id/nextExerciseButton"
+			android:text="@string/need_help"
+			android:id="@+id/needHelpButton"
 			android:layout_below="@+id/playRecordingButton"
 			android:layout_alignLeft="@+id/playRecordingButton"
 			android:layout_alignStart="@+id/playRecordingButton"

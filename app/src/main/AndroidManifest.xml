@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.altervista.zhen.sightsingnow" >
 
-	<uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
     <application
         android:allowBackup="true"
@@ -25,6 +25,22 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.altervista.zhen.sightsingnow.WelcomeScreenActivity" />
+        </activity>
+        <activity
+            android:name=".SelectDifficultyActivity"
+            android:label="@string/title_activity_select_difficulty"
+            android:parentActivityName=".WelcomeScreenActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.altervista.zhen.sightsingnow.WelcomeScreenActivity" />
+        </activity>
+        <activity
+            android:name=".SelectMusicActivity"
+            android:label="@string/title_activity_select_music"
+            android:parentActivityName=".SelectDifficultyActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.altervista.zhen.sightsingnow.SelectDifficultyActivity" />
         </activity>
     </application>
 

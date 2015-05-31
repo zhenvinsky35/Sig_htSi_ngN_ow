@@ -1,9 +1,9 @@
 package org.altervista.zhen.sightsingnow;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -50,14 +50,14 @@ public class WelcomeScreenActivity extends ActionBarActivity
 
 	public void onClickTrebleClef(View view)
 	{
-		Intent intent = new Intent(this, PracticeActivity.class)
+		Intent intent = new Intent(this, SelectDifficultyActivity.class)
 				.putExtra(PracticeActivity.EXTRA_CLEF, MusicNotationView.Clef.TREBLE_NUMERICAL_IDENTIFIER);
 		startActivity(intent, null);
 	}
 
 	public void onClickBassClef(View view)
 	{
-		Intent intent = new Intent(this, PracticeActivity.class)
+		Intent intent = new Intent(this, SelectDifficultyActivity.class)
 				.putExtra(PracticeActivity.EXTRA_CLEF, MusicNotationView.Clef.BASS_NUMERICAL_IDENTIFIER);
 		startActivity(intent, null);
 }

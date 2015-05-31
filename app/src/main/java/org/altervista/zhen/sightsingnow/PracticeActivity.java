@@ -1,19 +1,20 @@
 package org.altervista.zhen.sightsingnow;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.net.Uri;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -28,18 +29,28 @@ import jm.music.data.Phrase;
 import jm.music.data.Score;
 import jm.util.Write;
 
-import static org.altervista.zhen.sightsingnow.MusicNotationView.*;
+import static org.altervista.zhen.sightsingnow.MusicNotationView.Clef;
+import static org.altervista.zhen.sightsingnow.MusicNotationView.KeySignature;
+import static org.altervista.zhen.sightsingnow.MusicNotationView.OnClickListener;
 
 /**
  * The activity for the practice screen.
  */
 public class PracticeActivity extends ActionBarActivity
 {
-	static final String EXTRA_CLEF = "org.altervista.zhen.sightsingnow.CLEF"; //default visibility
+	//default package-lvl visibility
+	static final String EXTRA_CLEF = "org.altervista.zhen.sightsingnow.CLEF";
+
+	static final String EXTRA_DIFFICULTY_LEVEL = "org.altervista.zhen.sightsingnow.DIFFICULTY_LEVEL";
+
+	static final String EXTRA_PRACTICE_MUSIC_NUMERICAL_IDENTIFIER = "org.altervista.zhen.sightsingnow.PRACTICE_MUSIC_NUM_ID";
+
 	private static final String STATE_PRACTICE_MUSIC_NUMERICAL_IDENTIFIER = "practiceMusicNumId";
+	private static final String STATE_PRACTICE_MUSIC_DIFFICULTY = "practiceMusicDifficulty";
 	private static final String LOG_TAG = PracticeActivity.class.getSimpleName();
 
 	private Clef mClef;
+	private byte mDifficulty;
 
 	private PracticeMusic mPracticeMusic;
 
@@ -72,10 +83,20 @@ public class PracticeActivity extends ActionBarActivity
 		}
 		else
 		{
-			int practiceMusicNumId = savedInstanceState.getInt(STATE_PRACTICE_MUSIC_NUMERICAL_IDENTIFIER); //equals zero if no value was previously set in onSaveInstanceState()
-			setPracticeMusic(PracticeMusic.getPracticeMusicFromNumericalIdentifier(practiceMusicNumId)); //sets to null if practiceMusicNumId equals zero
+			mDifficulty = savedInstanceState.getByte(STATE_PRACTICE_MUSIC_DIFFICULTY, (byte)-1); //equals -1 if no difficulty saved
+			int practiceMusicNumId = savedInstanceState.getInt(STATE_PRACTICE_MUSIC_NUMERICAL_IDENTIFIER, -1); //equals -1 if no value was previously set in onSaveInstanceState()
+			mPracticeMusic = PracticeMusic.getPracticeMusicFromNumericalIdentifier(mDifficulty, practiceMusicNumId); //sets to null if either practiceMusicNumId or mDifficulty equals -1
 		}
 
+		if (mPracticeMusic == null) //no PracticeMusic saved from SavedInstanceState
+		{
+			Intent receivedIntent = getIntent();
+			mDifficulty = receivedIntent.getByteExtra(EXTRA_DIFFICULTY_LEVEL, PracticeMusic.DIFFICULTY_LEVEL_EASY);
+			int practiceMusicNumId = receivedIntent.getIntExtra(EXTRA_PRACTICE_MUSIC_NUMERICAL_IDENTIFIER, 0);
+			mPracticeMusic = PracticeMusic.getPracticeMusicFromNumericalIdentifier(mDifficulty, practiceMusicNumId);
+		}
+
+		//under current arrangements, the clef will not be remembered
 		byte clefNumId = getIntent().getByteExtra(EXTRA_CLEF, Clef.TREBLE_NUMERICAL_IDENTIFIER);
 		mClef = Clef.getClefFromNumericalIdentifier(clefNumId);
 	}
@@ -102,6 +123,7 @@ public class PracticeActivity extends ActionBarActivity
 	@Override
 	protected void onSaveInstanceState(Bundle outState)
 	{
+		outState.putByte(STATE_PRACTICE_MUSIC_DIFFICULTY, mDifficulty);
 		outState.putInt(STATE_PRACTICE_MUSIC_NUMERICAL_IDENTIFIER, mPracticeMusic.getNumericalIdentifier());
 		super.onSaveInstanceState(outState);
 	}
@@ -146,7 +168,7 @@ public class PracticeActivity extends ActionBarActivity
 			Button getStartingPitchButton = (Button) rootView.findViewById(R.id.getStartingPitchButton);
 			final Button getRhythmButton = (Button) rootView.findViewById(R.id.getRhythmButton);
 			final Button playReferenceButton = (Button) rootView.findViewById(R.id.playReferenceButton);
-			Button nextExerciseButton = (Button) rootView.findViewById(R.id.nextExerciseButton);
+			Button needHelpButton = (Button) rootView.findViewById(R.id.needHelpButton);
 
 			getStartingPitchButton.setOnClickListener(new OnClickListener()
 			{
@@ -316,7 +338,6 @@ public class PracticeActivity extends ActionBarActivity
 						catch (RuntimeException e)
 						{
 							//a RuntimeException is intentionally thrown if no data has been received when stop() is called
-							Log.w(LOG_TAG, e.getMessage());
 						}
 						mMediaRecorder.reset();
 						mMediaRecorder.release();
@@ -449,19 +470,12 @@ public class PracticeActivity extends ActionBarActivity
 				}
 			});
 
-			nextExerciseButton.setOnClickListener(new OnClickListener()
+			needHelpButton.setOnClickListener(new OnClickListener()
 			{
 				@Override
 				public void onClick(View v)
 				{
-					releaseAllMediaPlayers();
-					deleteAllAudioFiles();
-					setRecordButtonToNotRecordingState(recordButton, playRecordingButton);
-
-					int numIdToExclude = ((PracticeActivity) getActivity()).getPracticeMusic().getNumericalIdentifier();
-					((PracticeActivity) getActivity()).setPracticeMusic(null); //forces drawNewMusic() to select a random piece of music
-
-					drawNewMusic(numIdToExclude);
+					Toast.makeText(getActivity(), R.string.need_help_message, Toast.LENGTH_LONG).show();
 				}
 			});
 
@@ -475,13 +489,6 @@ public class PracticeActivity extends ActionBarActivity
 		private void drawNewMusic(int practiceMusicNumIdToExclude)
 		{
 			PracticeMusic practiceMusic = ((PracticeActivity) getActivity()).getPracticeMusic();
-
-			if (practiceMusic == null)
-			{
-				practiceMusic = PracticeMusic.getRandomPracticeMusic(practiceMusicNumIdToExclude);
-			}
-
-			((PracticeActivity) getActivity()).setPracticeMusic(practiceMusic);
 
 			KeySignature keySignature = practiceMusic.getKeySignature();
 			byte timeSignatureUpperNum = practiceMusic.getTimeSignatureUpperNum();

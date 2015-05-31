@@ -11,14 +11,11 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.os.Build;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 
-import jm.JMC;
 import jm.music.data.Note;
 
-import static org.altervista.zhen.sightsingnow.EnhancedNote.*;
-import static org.altervista.zhen.sightsingnow.EnhancedNote.BaseNoteAndOutOfKeySignatureAccidental.*;
+import static org.altervista.zhen.sightsingnow.EnhancedNote.EnhancedDuration;
 
 /**
  * This custom view takes musical data as input and draws a musical staff with the inputted music on it.
@@ -1182,7 +1179,6 @@ public class MusicNotationView extends View
 								}
 								break;
 							default:
-								Log.e(LOG_TAG, "you screwed up the switch statements when drawing ledger lines in drawMusicalNotes()");
 								break;
 						}
 					}
@@ -1227,8 +1223,6 @@ public class MusicNotationView extends View
 									//draw nothing
 									break;
 								default:
-									Log.e(LOG_TAG, "Value for getAccidental() is not an enum value " +
-											"or you screwed up the switch statements when drawing accidentals in drawMusicalNotes()");
 									break;
 							}
 							startX += emptySpaceWholeNote;
@@ -1259,9 +1253,7 @@ public class MusicNotationView extends View
 								case NONE:
 									//draw nothing
 									break;
-								default:
-									Log.e(LOG_TAG, "Value for getAccidental() is not an enum value " +
-											"or you screwed up the switch statements when drawing accidentals in drawMusicalNotes()");
+                                default:
 									break;
 							}
 							centerXForDot1 = right + centerXForDot1Offset;
@@ -1296,8 +1288,6 @@ public class MusicNotationView extends View
 									//draw nothing
 									break;
 								default:
-									Log.e(LOG_TAG, "Value for getAccidental() is not an enum value " +
-											"or you screwed up the switch statements when drawing accidentals in drawMusicalNotes()");
 									break;
 							}
 							centerXForDot1 = right + centerXForDot1Offset;
@@ -1325,8 +1315,6 @@ public class MusicNotationView extends View
 									canvas.drawBitmap(mHalfNoteStemDownBitmap, null, coordinates, null);
 									break;
 								default:
-									Log.e(LOG_TAG, "Value for stemDirection is not an enum value " +
-											"or you screwed up the switch statements when drawing notes in drawMusicalNotes()");
 									break;
 							}
 							switch (note.getBaseNoteAndOutOfKeySignatureAccidental().getAccidental())
@@ -1347,8 +1335,6 @@ public class MusicNotationView extends View
 									//draw nothing
 									break;
 								default:
-									Log.e(LOG_TAG, "Value for getAccidental() is not an enum value " +
-											"or you screwed up the switch statements when drawing accidentals in drawMusicalNotes()");
 									break;
 							}
 							startX += emptySpaceHalfNote;
@@ -1371,8 +1357,6 @@ public class MusicNotationView extends View
 									canvas.drawBitmap(mHalfNoteStemDownBitmap, null, coordinates, null);
 									break;
 								default:
-									Log.e(LOG_TAG, "Value for stemDirection is not an enum value " +
-											"or you screwed up the switch statements when drawing notes in drawMusicalNotes()");
 									break;
 							}
 							switch (note.getBaseNoteAndOutOfKeySignatureAccidental().getAccidental())
@@ -1393,8 +1377,6 @@ public class MusicNotationView extends View
 									//draw nothing
 									break;
 								default:
-									Log.e(LOG_TAG, "Value for getAccidental() is not an enum value " +
-											"or you screwed up the switch statements when drawing accidentals in drawMusicalNotes()");
 									break;
 							}
 							centerXForDot1 = right + centerXForDot1Offset;
@@ -1420,8 +1402,6 @@ public class MusicNotationView extends View
 									canvas.drawBitmap(mHalfNoteStemDownBitmap, null, coordinates, null);
 									break;
 								default:
-									Log.e(LOG_TAG, "Value for stemDirection is not an enum value " +
-											"or you screwed up the switch statements when drawing notes in drawMusicalNotes()");
 									break;
 							}
 							switch (note.getBaseNoteAndOutOfKeySignatureAccidental().getAccidental())
@@ -1442,8 +1422,6 @@ public class MusicNotationView extends View
 									//draw nothing
 									break;
 								default:
-									Log.e(LOG_TAG, "Value for getAccidental() is not an enum value " +
-											"or you screwed up the switch statements when drawing accidentals in drawMusicalNotes()");
 									break;
 							}
 							centerXForDot1 = right + centerXForDot1Offset;
@@ -1471,8 +1449,6 @@ public class MusicNotationView extends View
 									canvas.drawBitmap(mQuarterNoteStemDownBitmap, null, coordinates, null);
 									break;
 								default:
-									Log.e(LOG_TAG, "Value for stemDirection is not an enum value " +
-											"or you screwed up the switch statements when drawing notes in drawMusicalNotes()");
 									break;
 							}
 							switch (note.getBaseNoteAndOutOfKeySignatureAccidental().getAccidental())
@@ -1493,8 +1469,6 @@ public class MusicNotationView extends View
 									//draw nothing
 									break;
 								default:
-									Log.e(LOG_TAG, "Value for getAccidental() is not an enum value " +
-											"or you screwed up the switch statements when drawing accidentals in drawMusicalNotes()");
 									break;
 							}
 							startX += emptySpaceQuarterNote;
@@ -1517,8 +1491,6 @@ public class MusicNotationView extends View
 									canvas.drawBitmap(mQuarterNoteStemDownBitmap, null, coordinates, null);
 									break;
 								default:
-									Log.e(LOG_TAG, "Value for stemDirection is not an enum value " +
-											"or you screwed up the switch statements when drawing notes in drawMusicalNotes()");
 									break;
 							}
 							switch (note.getBaseNoteAndOutOfKeySignatureAccidental().getAccidental())
@@ -1539,8 +1511,6 @@ public class MusicNotationView extends View
 									//draw nothing
 									break;
 								default:
-									Log.e(LOG_TAG, "Value for getAccidental() is not an enum value " +
-											"or you screwed up the switch statements when drawing accidentals in drawMusicalNotes()");
 									break;
 							}
 							centerXForDot1 = right + centerXForDot1Offset;
@@ -1566,8 +1536,6 @@ public class MusicNotationView extends View
 									canvas.drawBitmap(mQuarterNoteStemDownBitmap, null, coordinates, null);
 									break;
 								default:
-									Log.e(LOG_TAG, "Value for stemDirection is not an enum value " +
-											"or you screwed up the switch statements when drawing notes in drawMusicalNotes()");
 									break;
 							}
 							switch (note.getBaseNoteAndOutOfKeySignatureAccidental().getAccidental())
@@ -1588,8 +1556,6 @@ public class MusicNotationView extends View
 									//draw nothing
 									break;
 								default:
-									Log.e(LOG_TAG, "Value for getAccidental() is not an enum value " +
-											"or you screwed up the switch statements when drawing accidentals in drawMusicalNotes()");
 									break;
 							}
 							centerXForDot1 = right + centerXForDot1Offset;
@@ -1618,8 +1584,6 @@ public class MusicNotationView extends View
 									canvas.drawBitmap(mEighthNoteStemDownBitmap, null, coordinates, null);
 									break;
 								default:
-									Log.e(LOG_TAG, "Value for stemDirection is not an enum value " +
-											"or you screwed up the switch statements when drawing notes in drawMusicalNotes()");
 									break;
 							}
 							switch (note.getBaseNoteAndOutOfKeySignatureAccidental().getAccidental())
@@ -1640,8 +1604,6 @@ public class MusicNotationView extends View
 									//draw nothing
 									break;
 								default:
-									Log.e(LOG_TAG, "Value for getAccidental() is not an enum value " +
-											"or you screwed up the switch statements when drawing accidentals in drawMusicalNotes()");
 									break;
 							}
 							startX += emptySpaceEighthNote;
@@ -1666,8 +1628,6 @@ public class MusicNotationView extends View
                                     break;
                                 default:
                                     right = -1;
-                                    Log.e(LOG_TAG, "Value for stemDirection is not an enum value " +
-                                            "or you screwed up the switch statements when drawing notes in drawMusicalNotes()");
                                     break;
                             }
                             switch (note.getBaseNoteAndOutOfKeySignatureAccidental().getAccidental())
@@ -1688,8 +1648,6 @@ public class MusicNotationView extends View
                                     //draw nothing
                                     break;
                                 default:
-                                    Log.e(LOG_TAG, "Value for getAccidental() is not an enum value " +
-                                            "or you screwed up the switch statements when drawing accidentals in drawMusicalNotes()");
                                     break;
                             }
                             centerXForDot1 = right + centerXForDot1Offset;
@@ -1717,8 +1675,6 @@ public class MusicNotationView extends View
 									break;
 								default:
 									right = -1;
-									Log.e(LOG_TAG, "Value for stemDirection is not an enum value " +
-											"or you screwed up the switch statements when drawing notes in drawMusicalNotes()");
 									break;
 							}
 							switch (note.getBaseNoteAndOutOfKeySignatureAccidental().getAccidental())
@@ -1739,8 +1695,6 @@ public class MusicNotationView extends View
 									//draw nothing
 									break;
 								default:
-									Log.e(LOG_TAG, "Value for getAccidental() is not an enum value " +
-											"or you screwed up the switch statements when drawing accidentals in drawMusicalNotes()");
 									break;
 							}
 							centerXForDot1 = right + centerXForDot1Offset;
@@ -1769,8 +1723,6 @@ public class MusicNotationView extends View
 									canvas.drawBitmap(mSixteenthNoteStemDownBitmap, null, coordinates, null);
 									break;
 								default:
-									Log.e(LOG_TAG, "Value for stemDirection is not an enum value " +
-											"or you screwed up the switch statements when drawing notes in drawMusicalNotes()");
 									break;
 							}
 							switch (note.getBaseNoteAndOutOfKeySignatureAccidental().getAccidental())
@@ -1791,8 +1743,6 @@ public class MusicNotationView extends View
 									//draw nothing
 									break;
 								default:
-									Log.e(LOG_TAG, "Value for getAccidental() is not an enum value " +
-											"or you screwed up the switch statements when drawing accidentals in drawMusicalNotes()");
 									break;
 							}
 							startX += emptySpaceSixteenthNote;
@@ -1817,8 +1767,6 @@ public class MusicNotationView extends View
 									break;
 								default:
 									right = -1;
-									Log.e(LOG_TAG, "Value for stemDirection is not an enum value " +
-											"or you screwed up the switch statements when drawing notes in drawMusicalNotes()");
 									break;
 							}
 							switch (note.getBaseNoteAndOutOfKeySignatureAccidental().getAccidental())
@@ -1839,8 +1787,6 @@ public class MusicNotationView extends View
 									//draw nothing
 									break;
 								default:
-									Log.e(LOG_TAG, "Value for getAccidental() is not an enum value " +
-											"or you screwed up the switch statements when drawing accidentals in drawMusicalNotes()");
 									break;
 							}
 							centerXForDot1 = right + centerXForDot1Offset;
@@ -1867,8 +1813,6 @@ public class MusicNotationView extends View
 									canvas.drawBitmap(mThirtysecondNoteStemDownBitmap, null, coordinates, null);
 									break;
 								default:
-									Log.e(LOG_TAG, "Value for stemDirection is not an enum value " +
-											"or you screwed up the switch statements when drawing notes in drawMusicalNotes()");
 									break;
 							}
 							switch (note.getBaseNoteAndOutOfKeySignatureAccidental().getAccidental())
@@ -1889,8 +1833,6 @@ public class MusicNotationView extends View
 									//draw nothing
 									break;
 								default:
-									Log.e(LOG_TAG, "Value for getAccidental() is not an enum value " +
-											"or you screwed up the switch statements when drawing accidentals in drawMusicalNotes()");
 									break;
 							}
 							startX += emptySpaceThirtySecondNote;
@@ -1957,8 +1899,6 @@ public class MusicNotationView extends View
 						return new YPosOfNoteheadWithLedgerLinesAndStemDir(lineFiveY - gapBetweenLines, 1,
 								PositionOfLedgerLines.ABOVE_THE_STAFF, StemDirection.DOWN);
 					default:
-						Log.e(LOG_TAG, "Value for BaseNote found to not be an enum value " +
-								"(or you screwed up the switch statements in getCenterYPositionOfNotehead()");
 						return null;
 				}
 			case BASS:
@@ -2010,12 +1950,9 @@ public class MusicNotationView extends View
 						return new YPosOfNoteheadWithLedgerLinesAndStemDir(lineFiveY - (3.5f * gapBetweenLines), 2,
 								PositionOfLedgerLines.ABOVE_THE_STAFF, StemDirection.DOWN);
 					default:
-						Log.e(LOG_TAG, "Value for BaseNote found to not be an enum value " +
-								"(or you screwed up the switch statements in getCenterYPositionOfNotehead()");
 						return null;
 				}
 			default:
-				Log.e(LOG_TAG, "Value for mClef found to be neither TREBLE nor BASS");
 				return null;
 		}
 	}
@@ -2033,9 +1970,9 @@ public class MusicNotationView extends View
         return returnArray;
     }
 
+	@Deprecated
     protected void logNoPreInitializedFigure(String figureName)
     {
-        Log.w(LOG_TAG, figureName + " is not pre-initialized when it should be.");
     }
 
     @Override
@@ -2107,7 +2044,6 @@ public class MusicNotationView extends View
 				case BASS_NUMERICAL_IDENTIFIER:
 					return BASS;
 				default: //assumes treble clef and logs an error
-					Log.e(LOG_TAG, "Value other than expected values passed into getClefFromNumericalIdentifier, assuming treble clef");
 					return TREBLE;
 			}
 		}
@@ -2119,8 +2055,82 @@ public class MusicNotationView extends View
         F_MAJOR, B_FLAT_MAJOR, E_FLAT_MAJOR, A_FLAT_MAJOR, D_FLAT_MAJOR, G_FLAT_MAJOR, C_FLAT_MAJOR,
         A_MINOR, E_MINOR, B_MINOR, F_SHARP_MINOR, C_SHARP_MINOR, G_SHARP_MINOR, D_SHARP_MINOR, A_SHARP_MINOR,
         D_MINOR, G_MINOR, C_MINOR, F_MINOR, B_FLAT_MINOR, E_FLAT_MINOR, A_FLAT_MINOR,
-        ATONAL, NO_KEY_SIGNATURE
-    }
+        ATONAL, NO_KEY_SIGNATURE;
+
+		@Override
+		public String toString()
+		{
+			switch (this)
+			{
+				case C_MAJOR:
+					return "C Major";
+				case G_MAJOR:
+					return "G Major";
+				case D_MAJOR:
+					return "D Major";
+				case A_MAJOR:
+					return "A Major";
+				case E_MAJOR:
+					return "E Major";
+				case B_MAJOR:
+					return "B Major";
+				case F_SHARP_MAJOR:
+					return "F Sharp Major";
+				case C_SHARP_MAJOR:
+					return "C Sharp Major";
+				case F_MAJOR:
+					return "F Major";
+				case B_FLAT_MAJOR:
+					return "B Flat Major";
+				case E_FLAT_MAJOR:
+					return "E Flat Major";
+				case A_FLAT_MAJOR:
+					return "A Flat Major";
+				case D_FLAT_MAJOR:
+					return "D Flat Major";
+				case G_FLAT_MAJOR:
+					return "G Flat Major";
+				case C_FLAT_MAJOR:
+					return "C Flat Major";
+				case A_MINOR:
+					return "A Minor";
+				case E_MINOR:
+					return "E Minor";
+				case B_MINOR:
+					return "B Minor";
+				case F_SHARP_MINOR:
+					return "F Sharp Minor";
+				case C_SHARP_MINOR:
+					return "C Sharp Minor";
+				case G_SHARP_MINOR:
+					return "G Sharp Minor";
+				case D_SHARP_MINOR:
+					return "D Sharp Minor";
+				case A_SHARP_MINOR:
+					return "A Sharp Minor";
+				case D_MINOR:
+					return "D Minor";
+				case G_MINOR:
+					return "G Minor";
+				case C_MINOR:
+					return "C Minor";
+				case F_MINOR:
+					return "F Minor";
+				case B_FLAT_MINOR:
+					return "B Flat Minor";
+				case E_FLAT_MINOR:
+					return "E Flat Minor";
+				case A_FLAT_MINOR:
+					return "A Flat Minor";
+				case ATONAL:
+					return "Atonal";
+				case NO_KEY_SIGNATURE:
+					return "No Key Signature";
+				default:
+					return super.toString();
+			}
+		}
+	}
 
 	private static class YPosOfNoteheadWithLedgerLinesAndStemDir
 	{
